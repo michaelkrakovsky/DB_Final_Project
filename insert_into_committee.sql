@@ -8,3 +8,9 @@ Insert Into `committee members` values ("Tom", "Brady", 7);
 Insert Into `committee members` values ("Michael", "Jordan", 8);
 Insert Into `committee members` values ("Michael", "Shue", 9);
 Insert Into `committee members` values ("The nameless", "The nameless", 10);
+
+
+Insert into `committee list` values ("AI Committee", 3);
+Insert into `committee list` values ("The Goat Communitte", 7);
+Insert into `committee list` values ("Stellar", 1);
+Insert into `committee list` values ("SuperBowl Committee", 7);
