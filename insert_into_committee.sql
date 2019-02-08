@@ -44,10 +44,7 @@ Insert into chairlist values ("The Goat Communitte", 10);
 
 # Hotel Room
 insert into HotelRoom values ("205A");
-insert into HotelRoom values ("405A");
-insert into HotelRoom values ("206B");
 insert into HotelRoom values ("212A");
-insert into HotelRoom values ("233C");
 
 # Students
 insert into Students values (123123, "Dude 1", "nooooooo", "205A");
@@ -82,3 +79,24 @@ insert into JobAdds values (92348, "Clegery", "Atl", 53);
 insert into JobAdds values (92348, "CEO", "LA", 67);
 insert into JobAdds values (7534, "CFO", "por", 65);
 
+#Sponsors 
+insert into Sponsors values (1, 35345, "Tony", "TheTiger");
+insert into Sponsors values (2, 92348, "Rudolph", "TheRedNosedReindeer");
+insert into Sponsors values (3, 1293, "Bob", "TheBuilder");
+insert into Sponsors values (4, 7534, "Margarita", "Lamborghini");
+
+#SponsorAttendees
+insert into Sponsors_Attendees values (1, 123456);
+insert into Sponsors_Attendees values (2, 123456);
+insert into Sponsors_Attendees values (3, 98456);
+insert into Sponsors_Attendees values (4, 743456);
+
+#Speakers
+insert into Speakers values ("Wendy","Powley", 1);
+insert into Speakers values ("Michael","Krakovspee", 2);
+insert into Speakers values ("Matt","RoccoNicNicastro", 3);
+
+#SpeakersAttendees
+insert into Speaker_Attendees values (1, 123456);
+insert into Speaker_Attendees values (2, 98456);
+insert into Speaker_Attendees values (2, 743456);
