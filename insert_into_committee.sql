@@ -1,7 +1,3 @@
- #Chair Constraint
-alter table chairlist add constraint ensureTuplesMatch 
-	foreign key (SubCommittee, ChairID) references Membership (SubCommittee, MemberID);
-
 #Committee inserts
 Insert Into `committee_members` values ("Michael", "Krakovsky", 1);
 Insert Into `committee_members` values ("Andrew", "Greb", 2);
@@ -37,41 +33,37 @@ Insert into `membership` values ("The Goat Communitte", 6);
 Insert into `membership` values ("Stellar", 4);
 Insert into `membership` values ("SuperBowl Committee", 4);
 
-# Chair list 
-Insert Into chairlist values ("SuperBowl Committee", 4);
-Insert Into chairlist values ("Stellar", 4);
-Insert into chairlist values ("The Goat Communitte", 10);
-
 # Hotel Room
-insert into HotelRoom values ("205A");
-insert into HotelRoom values ("212A");
+insert into HotelRoom values ("205A", 2);
+insert into HotelRoom values ("212A", 2);
 
 # Students
 insert into Students values (123123, "Dude 1", "nooooooo", "205A");
-insert into Students values (24324, "Dude 2", "another", "205A");
-insert into Students values (23421, "Person 2", "last", "205A");
-insert into Students values (234243, "Girl 1", "meee", "205A");
-insert into Students values (309342, "Girl 31", "andi", "212A");
-insert into Students values (8765, "Damn 31", "andi", "212A");
+insert into Students values (124324, "Dude 2", "another", "205A");
+insert into Students values (123421, "Person 2", "last", "205A");
+insert into Students values (1234243, "Girl 1", "meee", "205A");
+insert into Students values (1309342, "Girl 31", "andi", "212A");
+insert into Students values (18765, "Damn 31", "andi", "212A");
 
 # Session
 insert into `Session` values ('2019-02-08 12:00:00', '2019-02-08 12:30:00', "Big Room", "Learn", 123456);
 insert into `Session` values ('2019-02-08 13:00:00', '2019-02-08 13:30:00', "Small Room", "Learn more", 98456);
 insert into `Session` values ('2019-02-09 16:00:00', '2019-02-08 16:30:00', "Big Room", "Closing", 743456);
 
-# Student_Attendees
-insert into Student_Attendees values (123123, 743456);
-insert into Student_Attendees values (8765, 743456);
-insert into Student_Attendees values (8765, 98456);
-insert into Student_Attendees values (23421, 98456);
-insert into Student_Attendees values (23421, 123456);
-insert into Student_Attendees values (309342, 123456);
+# Student_Session_Schedule
+insert into Student_Session_Schedule values (123123, 743456);
+insert into Student_Session_Schedule values (18765, 743456);
 
-# Company 
-insert into Company values ("Platinum", 3, 35345, "The company");
-insert into Company values ("Gold", 4, 92348, "Dominate");
-insert into Company values ("Silver", 1, 1293, "Goat");
-insert into Company values ("Bronze", 2, 7534, "Sacrafice");
+insert into Student_Session_Schedule values (18765, 98456);
+insert into Student_Session_Schedule values (123421, 98456);
+insert into Student_Session_Schedule values (123421, 123456);
+insert into Student_Session_Schedule values (1309342, 123456);
+
+#Sponsors
+insert into Sponsors values ("Platinum", 3, 35345, "The company");
+insert into Sponsors values ("Gold", 4, 92348, "Dominate");
+insert into Sponsors values ("Silver", 1, 1293, "Goat");
+insert into Sponsors values ("Bronze", 2, 7534, "Sacrafice");
 
 # Job Adds
 insert into JobAdds values (35345, "Manager", "To", 23);
@@ -79,24 +71,31 @@ insert into JobAdds values (92348, "Clegery", "Atl", 53);
 insert into JobAdds values (92348, "CEO", "LA", 67);
 insert into JobAdds values (7534, "CFO", "por", 65);
 
-#Sponsors 
-insert into Sponsors values (1, 35345, "Tony", "TheTiger");
-insert into Sponsors values (2, 92348, "Rudolph", "TheRedNosedReindeer");
-insert into Sponsors values (3, 1293, "Bob", "TheBuilder");
-insert into Sponsors values (4, 7534, "Margarita", "Lamborghini");
+#Sponsor Attendee
+insert into Sponsor_Attendee values (2000, 35345, "Tony", "TheTiger");
+insert into Sponsor_Attendee values (2001, 92348, "Rudolph", "TheRedNosedReindeer");
+insert into Sponsor_Attendee values (2002, 1293, "Bob", "TheBuilder");
+insert into Sponsor_Attendee values (2003, 7534, "Margarita", "Lamborghini");
 
-#SponsorAttendees
-insert into Sponsors_Attendees values (1, 123456);
-insert into Sponsors_Attendees values (2, 123456);
-insert into Sponsors_Attendees values (3, 98456);
-insert into Sponsors_Attendees values (4, 743456);
+#Sponsor Session Schedule
+insert into Sponsor_Session_Schedule values (2000, 123456);
+insert into Sponsor_Session_Schedule values (2001, 123456);
+insert into Sponsor_Session_Schedule values (2002, 98456);
+insert into Sponsor_Session_Schedule values (2003, 743456);
 
 #Speakers
-insert into Speakers values ("Wendy","Powley", 1);
-insert into Speakers values ("Michael","Krakovspee", 2);
-insert into Speakers values ("Matt","RoccoNicNicastro", 3);
+insert into Speakers values ("Wendy","Powley", 4000);
+insert into Speakers values ("Michael","Krakovspee", 4001);
+insert into Speakers values ("Matt","RoccoNicNicastro", 4002);
 
 #SpeakersAttendees
-insert into Speaker_Attendees values (1, 123456);
-insert into Speaker_Attendees values (2, 98456);
-insert into Speaker_Attendees values (2, 743456);
+insert into Speaker_Session_Schedule values (4000, 123456);
+insert into Speaker_Session_Schedule values (4001, 98456);
+insert into Speaker_Session_Schedule values (4002, 743456);
+
+#Professionals
+insert into Professionals values (30000, "Terry", "Larry");
+
+#Professional Session Schedule
+insert into Professional_Session_Schedule values (30000, 123456);
+

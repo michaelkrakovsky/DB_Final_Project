@@ -30,6 +30,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`HotelRoom` (
   `RoomNumber` VARCHAR(10) NOT NULL,
+  `NumberOfBeds` INT NOT NULL,
   PRIMARY KEY (`RoomNumber`))
 ENGINE = InnoDB;
 
@@ -66,9 +67,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Assn_1_Committee_And_Attendees`.`Student_Attendees`
+-- Table `Assn_1_Committee_And_Attendees`.`Student_Session_Schedule`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Student_Attendees` (
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Student_Session_Schedule` (
   `AttendeeID` INT NOT NULL,
   `SessionID` INT NOT NULL,
   PRIMARY KEY (`AttendeeID`, `SessionID`),
@@ -98,9 +99,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Assn_1_Committee_And_Attendees`.`Company`
+-- Table `Assn_1_Committee_And_Attendees`.`Sponsors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Company` (
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsors` (
   `SponsorType` VARCHAR(20) NOT NULL,
   `NumEmails` INT NOT NULL,
   `CompanyID` INT NOT NULL,
@@ -110,9 +111,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Assn_1_Committee_And_Attendees`.`Sponsors`
+-- Table `Assn_1_Committee_And_Attendees`.`Sponsor_Attendee`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsors` (
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsor_Attendee` (
   `SponsorID` INT NOT NULL,
   `CompanyID` INT NOT NULL,
   `FirstName` VARCHAR(45) NOT NULL,
@@ -121,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsors` (
   INDEX `ComapnyID_idx` (`CompanyID` ASC) VISIBLE,
   CONSTRAINT `ComapnyID`
     FOREIGN KEY (`CompanyID`)
-    REFERENCES `Assn_1_Committee_And_Attendees`.`Company` (`CompanyID`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Sponsors` (`CompanyID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -137,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`JobAdds` (
   `PayRate` INT UNSIGNED NOT NULL,
   CONSTRAINT `ComapanyID`
     FOREIGN KEY (`CompanyID`)
-    REFERENCES `Assn_1_Committee_And_Attendees`.`Company` (`CompanyID`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Sponsors` (`CompanyID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -183,16 +184,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Assn_1_Committee_And_Attendees`.`Sponsors_Attendees`
+-- Table `Assn_1_Committee_And_Attendees`.`Sponsor_Session_Schedule`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsors_Attendees` (
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Sponsor_Session_Schedule` (
   `SponsorID` INT NOT NULL,
   `SessionID` INT NOT NULL,
   PRIMARY KEY (`SponsorID`, `SessionID`),
   INDEX `SessionDropID_idx` (`SessionID` ASC) VISIBLE,
   CONSTRAINT `SponsorID`
     FOREIGN KEY (`SponsorID`)
-    REFERENCES `Assn_1_Committee_And_Attendees`.`Sponsors` (`SponsorID`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Sponsor_Attendee` (`SponsorID`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `SessionSponsors!D`
@@ -204,9 +205,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Assn_1_Committee_And_Attendees`.`Speaker_Attendees`
+-- Table `Assn_1_Committee_And_Attendees`.`Speaker_Session_Schedule`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Speaker_Attendees` (
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Speaker_Session_Schedule` (
   `SpeakerID` INT NOT NULL,
   `SessionID` INT NOT NULL,
   PRIMARY KEY (`SpeakerID`, `SessionID`),
@@ -219,6 +220,38 @@ CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Speaker_Attendees` 
     FOREIGN KEY (`SessionID`)
     REFERENCES `Assn_1_Committee_And_Attendees`.`Session` (`SessionID`)
     ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Assn_1_Committee_And_Attendees`.`Professionals`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Professionals` (
+  `ProfessionalID` INT NOT NULL,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ProfessionalID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Assn_1_Committee_And_Attendees`.`Professional_Session_Schedule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Professional_Session_Schedule` (
+  `ProfessionalId` INT NOT NULL,
+  `SessionId` INT NOT NULL,
+  PRIMARY KEY (`SessionId`, `ProfessionalId`),
+  INDEX `ProfessionalID_idx` (`ProfessionalId` ASC) VISIBLE,
+  CONSTRAINT `ProfessionalSessionID`
+    FOREIGN KEY (`SessionId`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Session` (`SessionID`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `ProfessionalID`
+    FOREIGN KEY (`ProfessionalId`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Professionals` (`ProfessionalID`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
