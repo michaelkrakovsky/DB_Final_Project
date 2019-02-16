@@ -60,10 +60,10 @@ insert into Student_Session_Schedule values (123421, 123456);
 insert into Student_Session_Schedule values (1309342, 123456);
 
 #Sponsors
-insert into Sponsors values ("Platinum", 3, 35345, "The company");
+insert into Sponsors values ("Platinum", 5, 35345, "The company");
 insert into Sponsors values ("Gold", 4, 92348, "Dominate");
-insert into Sponsors values ("Silver", 1, 1293, "Goat");
-insert into Sponsors values ("Bronze", 2, 7534, "Sacrafice");
+insert into Sponsors values ("Silver", 3, 1293, "Goat");
+insert into Sponsors values ("Bronze", 0, 7534, "Sacrafice");
 
 # Job Adds
 insert into JobAdds values (35345, "Manager", "To", 23);
