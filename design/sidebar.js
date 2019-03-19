@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+// JavaScript source code
 
-<html>
-    <head>
+document.write(`
+<head>
         <style>
-
+		
             body {
                 font-family: "Lato", sans-serif;
             }
 
             .sidenav {
                 height: 100%;
-                width: 200px;
+                width: 210px;
                 position: fixed;
                 z-index: 1;
                 top: 0;
@@ -46,4 +46,19 @@
         </div>
 
     </body>
-</html>
+<head>
+<style>
+    
+body {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  
+}
+
+.main {
+	margin-left: 210px; /* Same as the width of the sidenav */
+	font-size: 28px; /* Increased text to enable scrolling */
+	padding: 0px 10px;
+}
+
+</style>
+</head>
+`);
