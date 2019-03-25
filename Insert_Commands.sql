@@ -48,7 +48,9 @@ insert into Students values (18765, "Damn 31", "andi", "212A");
 /* # Session */
 insert into Session values ('2019-02-08 12:00:00', '2019-02-08 12:30:00', "Big Room", "Learn", 123456);
 insert into Session values ('2019-02-08 13:00:00', '2019-02-08 13:30:00', "Small Room", "Learn more", 98456);
-insert into Session values ('2019-02-09 16:00:00', '2019-02-08 16:30:00', "Big Room", "Closing", 743456);
+insert into Session values ('2019-02-09 16:00:00', '2019-02-09 16:30:00', "Big Room", "Closing", 743456);
+insert into Session values ('2019-02-09 14:00:00', '2019-02-09 14:30:00', "Bigger Room", "Woooooooo", 643456);
+insert into Session values ('2019-02-09 15:00:00', '2019-02-09 15:30:00', "Biggesr Room", "Dagger", 123450);
 
 /* # Student_Session_Schedule */
 insert into Student_Session_Schedule values (123123, 743456);
