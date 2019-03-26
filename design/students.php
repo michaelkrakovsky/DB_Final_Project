@@ -6,12 +6,7 @@
 <body>
     <div class="main">
         <h2>Students</h2>
-        <!--
-        LIST ALL THE MEMBERS OF A SPECIFIC SUB COMMITEE
-        ##########################################################
-        START
-        -->
-        <h3>LIST ALL MEMBERS OF A SPECIFIC HOTEL ROOM</h3>
+        <h3>Hotel Room Student List</h3>
         <form method='post'>
           <?php
 
@@ -40,8 +35,8 @@
                                        Where HotelRoom = '$roomNum'");
               return $students;
             }
-
-            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
+            
+            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
                            'root',
                            'temp');
 
