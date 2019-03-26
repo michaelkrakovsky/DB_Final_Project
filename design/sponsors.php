@@ -78,7 +78,7 @@
              # function getSpons($dbh) {
              #   $spons = $dbh->query("Select CompanyName From Sponsors");
              #   return $spons;
-              }
+             # }
 
               # Function Description: Get all the positions for the desired company.
               # Parameters: dbh (The connection objection), compName (The company name) 
@@ -87,14 +87,15 @@
               function getPositions($dbh, $compName) {
                 $positions = $dbh->query("Select JobTitle From (Sponsors inner join
                                           JobAdds on Sponsors.CompanyID=JobAdds.CompanyID) as A
-                                          where A.CompanyName="$compName);
+                                          where A.CompanyName='$compName'");
                 return $positions;
               }
 
               $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                              'root',
                              '');
-              $positions = getPositions($dbh);
+
+              displayCompOptions($spons);
 
               echo "</select>";
               echo "<input type='submit' name='getPos' value='List Jobs'>";
