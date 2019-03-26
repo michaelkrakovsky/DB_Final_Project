@@ -36,19 +36,19 @@
               return $students;
             }
             
-            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
+            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
                            'root',
-                           'temp');
+                           '');
 
-            echo "HotelRoom:<input type='text' value='' name='RoomNum'><br>";
+            echo "HotelRoom:<input type='text' value='' name='RoomNum'><br>";     # Get user's input.
             echo "<input type='submit' name='getRoom' value='List Students'>";
 
-            if(isset($_POST['getRoom'])){
+            if(isset($_POST['getRoom'])){                       # Check to see if room exists.
               if($_POST['RoomNum'] != ''){
                 $room = hotelRoom($_POST['RoomNum'], $dbh);
                 if($room->rowCount()==0){
-                  echo "<p>ERROR: The following Room Number -> ",$_POST['RoomNum']
-                        ," does not exist";
+                  echo "<p>The following Room Number ",$_POST['RoomNum']
+                        ," does not exist. :(";
                 }
                 else{
                   displayRoom($_POST['RoomNum'], $room);
@@ -58,11 +58,6 @@
             }
           ?>
         </form>
-        <!--
-        END
-        ##########################################################
-        -->
-        <p></p>
     </div>
 </body>
 </html>
