@@ -14,10 +14,12 @@
         <h3>LIST ALL MEMBERS OF A SPECIFIC HOTEL ROOM</h3>
         <form method='post'>
           <?php
-            /*
-            Displays the students in a specific
-            hotel room
-            */
+
+            # Function Description: Displays the students in a specific hotel room.
+            # Parameters: roomNum (The room number), room (The PDO object with the SQL Information)
+            # Returns: None
+            # Throws: Displays an error if the room does not exist.
+            
             function displayRoom($roomNum, $room){
               echo "<h2>",$roomNum,"</h2>";
               echo "<table>";
@@ -28,10 +30,11 @@
               echo "</table>";
             }
 
-            /*
-            Queries for the given hotel room
-            in database
-            */
+            # Function Description: Queries for the given hotel room in database.
+            # Parameters: roomNum (The room number), dbh (The database connection)
+            # Returns: students (The query with the students located in the hotel room.)
+            # Throws: Displays an error if the room does not exist.
+
             function hotelRoom($roomNum, $dbh){
               $students = $dbh->query("Select FirstName,LastName From Students
                                        Where HotelRoom = '$roomNum'");
