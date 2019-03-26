@@ -3,7 +3,7 @@
 document.write(`
 <head>
         <style>
-		
+
             body {
                 font-family: "Lato", sans-serif;
             }
@@ -19,7 +19,7 @@ document.write(`
                 overflow-x: hidden;
                 padding-top: 20px;
             }
-    
+
             .sidenav a {
                 padding: 6px 8px 90px 16px;
                 text-decoration: none;
@@ -27,7 +27,7 @@ document.write(`
                 color: #818181;
                 display: block;
             }
-    
+
             .sidenav a:hover {
                 color: #f1f1f1;
             }
@@ -38,19 +38,19 @@ document.write(`
 
         <div class="sidenav">
             <a href="./homepage.html">Home</a>
-            <a href="./students.html">Students</a>
-            <a href="./subcommitees.html">Subcommitees</a>
-            <a href="./sponsors.html">Sponsors</a>
-            <a href="./conference_attendees.html">Conference Attendees</a>
-            <a href="./schedule.html">Schedule</a>
+            <a href="./students.php">Students</a>
+            <a href="./subcommitees.php">Subcommitees</a>
+            <a href="./sponsors.php">Sponsors</a>
+            <a href="./conference_attendees.php">Conference Attendees</a>
+            <a href="./schedule.php">Schedule</a>
         </div>
 
     </body>
 <head>
 <style>
-    
+
 body {
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .main {
