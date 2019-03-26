@@ -95,7 +95,7 @@
                              'root',
                              '');
 
-              displayCompOptions($spons);
+              displaySpons($spons);
 
               echo "</select>";
               echo "<input type='submit' name='getPos' value='List Jobs'>";
