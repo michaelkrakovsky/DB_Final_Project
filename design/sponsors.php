@@ -75,9 +75,9 @@
               # Parameters: dbh (The connection objection) 
               # Returns: spons (The query with the sponsor information.) # Throws: None
 
-              function getSpons($dbh) {
-                $spons = $dbh->query("Select CompanyName From Sponsors");
-                return $spons;
+             # function getSpons($dbh) {
+             #   $spons = $dbh->query("Select CompanyName From Sponsors");
+             #   return $spons;
               }
 
               # Function Description: Get all the positions for the desired company.
