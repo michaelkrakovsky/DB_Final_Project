@@ -50,9 +50,9 @@
                 return $subComNames;
               }
 
-              $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
+              $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                              'root',
-                             'temp');
+                             '');
               $subComNames = getSubCommittees($dbh);
 
               echo "<option value='Null'>Select Sub-Committee</option>";
