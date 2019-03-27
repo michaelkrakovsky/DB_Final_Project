@@ -19,7 +19,7 @@
                                             (select Distinct '$sessAttendID' from '$sessAttend') as A
                                             inner join '$tbTwo' on
                                             A.'$sessAttendID'='$tbTwo'.'$tbColTwo'");
-                echo "<p>"select FirstName, LastName from (select Distinct '$sessAttendID' from '$sessAttend') as A inner join '$tbTwo' on A.'$sessAttendID'='$tbTwo'.'$tbColTwo'"</p>";
+                echo "<p>",select FirstName, LastName from (select Distinct '$sessAttendID' from '$sessAttend') as A inner join '$tbTwo' on A.'$sessAttendID'='$tbTwo'.'$tbColTwo',"</p>";
                 return $listNames;
             }
 
