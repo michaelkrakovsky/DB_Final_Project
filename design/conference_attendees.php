@@ -16,9 +16,9 @@
 
             function getDesiredNames($sessAttend, $tbTwo, $sessAttendID, $tbColTwo, $pdo) {
                $listNames = $pdo->query("select FirstName, LastName from 
-                                            (select Distinct '$sessAttendID' from '$sessAttend') as A
-                                            inner join '$tbTwo' on
-                                            A.'$sessAttendID'='$tbTwo'.'$tbColTwo'");
+                                            (select Distinct $sessAttendID from $sessAttend) as A
+                                            inner join $tbTwo on
+                                            A.$sessAttendID=$tbTwo.$tbColTwo");
                 echo "select FirstName, LastName from (select Distinct $sessAttendID from '$sessAttend') as A inner join '$tbTwo' on A.'$sessAttendID'='$tbTwo'.'$tbColTwo'";
                 return $listNames;
             }
