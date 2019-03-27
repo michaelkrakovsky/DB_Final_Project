@@ -7,7 +7,7 @@
     <div class="main">
         <h2>Subcommitees</h2>
         <p></p>
-        <h3>SELECT A SUB-COMMITTEE TO DSIPLAY MEMBERS</h3>
+        <h3>SELECT A SUB-COMMITTEE TO DISPLAY MEMBERS</h3>
         <div class="dropdown">
           <form method="post">
             <?php

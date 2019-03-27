@@ -8,6 +8,19 @@
         <h2>Conference Attendees</h2>
         <?php
 
+            # Function Description: Get the list of names depending on the table name or group name.
+            # Parameters: tbOne (The first table to join.), tbTwo (The second table to join.), 
+            # tbColOne (The column name in the table one.), tbColTwo (The name of the column in table two.), 
+            # pdo (The database connection)
+            # Returns: listNames (The names from the table.) # Throws: None
+
+            function getDesiredNames($sessAttend, $tbTwo, $sessAttendID, $tbColTwo, $pdo) {
+               $listNames = $dbh->query("select FirstName, LastName from 
+                                            (select Distinct '$sessAttendID' from '$sessAttend') as A
+                                            inner join '$tbTwo' on
+                                            A.'$sessAttendID'='$tbTwo'.'$tbColTwo'");
+            }
+
             # Function Description: Display a list of names.
             # Parameters: compName (The job positions held in a PDO object)
             # Returns: None # Throws: None
@@ -25,21 +38,12 @@
                             'root',
                             '');
 
-            $students = getSponsors($dbh); 
-            displayCompOptions($morespons);
-
-            echo "</select>";
-            echo "<input type='submit' name='getPos' value='List Jobs'>";
-            if(isset($_POST['getPos'])) {
-                if(($_POST["sponsorName"] != 'showAllJobs') && ($_POST["sponsorName"] != 'Null')) {
-                   $jobs = getPositions($dbh, $_POST["sponsorName"]);
-                   displaySubCom($_POST["sponsorName"], $jobs);
-                } else if ($_POST["sponsorName"] == 'showAllJobs') {
-                   $allJobs = getAllPositions($dbh);
-                   displaySubCom("Display All", $allJobs);
-                }
-                unset($_POST["sponsorName"]);
-                } 
+            $students = getDesiredNames("Student_Session_Schedule", "AttendeeID", "Students", "StudentID", $dbh); 
+            $sponsors = getDesiredNames("Sponsor_Session_Schedule", "SponsorID", "Sponsore_Attendee", "SponsorID", $dbh);
+            $professi = getDesiredNames("Professional_Session_Schedule", "ProfessionalID", "Professionals", "ProfessionalID", $dbh);
+            displaySubCom("Students", $students);
+            displaySubCom("Sponsors", $sponsors);
+            displaySubCom("Professional", $professi);
             $dbh = Null;
         ?>
     </div>
