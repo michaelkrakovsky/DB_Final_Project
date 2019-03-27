@@ -44,7 +44,7 @@
         <div class="dropdown">
           <form method="post">
             <select name='sponsorName'>
-                <option value='showAllJobs'>Show All or Select Company</option>
+                <option value='showAllJobs'>Show All Jobs or Select Company</option>
             <?php
 
               # Function Description: Display all the options where the user can choose.
@@ -116,7 +116,7 @@
                   displaySubCom($_POST["sponsorName"], $jobs);
                 } else {
                   $allJobs = getAllPositions($dbh);
-                  displaySubCom("Display All", $dbh);
+                  displaySubCom("Display All", $allJobs);
                 }
                 unset($_POST["sponsorName"]);
               }
