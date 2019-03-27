@@ -44,7 +44,7 @@
         <div class="dropdown">
           <form method="post">
             <select name='sponsorName'>
-                <option value='Null'>Select Company Name</option>
+                <option value='showAllJobs'>Show All or Select Company</option>
             <?php
 
               # Function Description: Display all the options where the user can choose.
@@ -92,6 +92,15 @@
                 return $positions;
               }
 
+              # Function Description: Get all positions available.
+              # Parameters: dbh (The connection objection) 
+              # Returns: allPositions (All available positions.) # Throws: None 
+
+              function getAllPositions($dbh) {
+                $allPositions = $dbh->query("select JobTitle from JobAdds");
+                return $allPositions;
+              }
+
               $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                              'root',
                              '');
@@ -101,12 +110,15 @@
 
               echo "</select>";
               echo "<input type='submit' name='getPos' value='List Jobs'>";
-              if(isset($_POST['getPos'])){
-                $jobs = getPositions($dbh, $_POST["sponsorName"]);
-                if($_POST["sponsorName"] != 'Null'){
+              if(isset($_POST['getPos'])) {
+                if($_POST["sponsorName"] != 'showAllJobs') {
+                  $jobs = getPositions($dbh, $_POST["sponsorName"]);
                   displaySubCom($_POST["sponsorName"], $jobs);
-                  unset($_POST["sponsorName"]);
+                } else {
+                  $allJobs = getAllPositions($dbh);
+                  displaySubCom("Display All", $dbh);
                 }
+                unset($_POST["sponsorName"]);
               }
               $dbh = Null;
             ?>
