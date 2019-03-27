@@ -42,6 +42,9 @@
             $students = getDesiredNames("Student_Session_Schedule", "AttendeeID", "Students", "StudentID", $dbh); 
             $sponsors = getDesiredNames("Sponsor_Session_Schedule", "SponsorID", "Sponsore_Attendee", "SponsorID", $dbh);
             $professi = getDesiredNames("Professional_Session_Schedule", "ProfessionalID", "Professionals", "ProfessionalID", $dbh);
+            if ($students == Null) {
+                echo "<p>HOUUUUUUSTON, WE...</p>"
+            }
             displaySubCom($students, "Students");
             displaySubCom($sponsors, "Sponsors");
             displaySubCom($professi, "Professional");
