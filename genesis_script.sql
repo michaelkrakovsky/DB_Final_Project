@@ -11,43 +11,43 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Assn_1_Committee_And_Attendees
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS Assn_1_Committee_And_Attendees DEFAULT CHARACTER SET utf8 ;
-USE Assn_1_Committee_And_Attendees ;
+CREATE SCHEMA IF NOT EXISTS `Assn_1_Committee_And_Attendees` DEFAULT CHARACTER SET utf8 ;
+USE `Assn_1_Committee_And_Attendees` ;
 
 -- -----------------------------------------------------
 -- Table `Assn_1_Committee_And_Attendees`.`Committee_Members`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Assn_1_Committee_And_Attendees.Committee_Members (
-  FirstName VARCHAR(45) NOT NULL,
-  LastName VARCHAR(45) NOT NULL,
-  MemberID INT NOT NULL,
-  PRIMARY KEY (MemberID))
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Committee_Members` (
+  `FirstName` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  `MemberID` INT NOT NULL,
+  PRIMARY KEY (`MemberID`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `Assn_1_Committee_And_Attendees`.`HotelRoom`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Assn_1_Committee_And_Attendees.HotelRoom (
-  RoomNumber VARCHAR(10) NOT NULL,
-  NumberOfBeds INT NOT NULL,
-  PRIMARY KEY (RoomNumber))
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`HotelRoom` (
+  `RoomNumber` VARCHAR(10) NOT NULL,
+  `NumberOfBeds` INT NOT NULL,
+  PRIMARY KEY (`RoomNumber`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `Assn_1_Committee_And_Attendees`.`Students`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Assn_1_Committee_And_Attendees.Students (
-  StudentID INT NOT NULL,
-  FirstName VARCHAR(45) NOT NULL,
-  LastName VARCHAR(45) NOT NULL,
-  HotelRoom VARCHAR(10) NULL,
-  PRIMARY KEY (StudentID),
-  INDEX RoomNumber_idx (HotelRoom ASC) VISIBLE,
-  CONSTRAINT RoomNumber
-    FOREIGN KEY (HotelRoom)
-    REFERENCES Assn_1_Committee_And_Attendees.HotelRoom (RoomNumber)
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Students` (
+  `StudentID` INT NOT NULL,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  `HotelRoom` VARCHAR(10) NULL,
+  PRIMARY KEY (`StudentID`),
+  INDEX `RoomNumber_idx` (`HotelRoom` ASC) VISIBLE,
+  CONSTRAINT `RoomNumber`
+    FOREIGN KEY (`HotelRoom`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`HotelRoom` (`RoomNumber`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -251,6 +251,27 @@ CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Professional_Sessio
   CONSTRAINT `ProfessionalID`
     FOREIGN KEY (`ProfessionalId`)
     REFERENCES `Assn_1_Committee_And_Attendees`.`Professionals` (`ProfessionalID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Assn_1_Committee_And_Attendees`.`Committee_Attendees`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Assn_1_Committee_And_Attendees`.`Committee_Attendees` (
+  `CommitteeID` INT NOT NULL,
+  `SessionID` INT NOT NULL,
+  PRIMARY KEY (`CommitteeID`, `SessionID`),
+  INDEX `SessionCommirreeID_idx` (`SessionID` ASC) VISIBLE,
+  CONSTRAINT `CommitteeMemberID`
+    FOREIGN KEY (`CommitteeID`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Committee_Members` (`MemberID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `SessionCommirreeID`
+    FOREIGN KEY (`SessionID`)
+    REFERENCES `Assn_1_Committee_And_Attendees`.`Session` (`SessionID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

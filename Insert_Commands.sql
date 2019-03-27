@@ -61,6 +61,13 @@ insert into Student_Session_Schedule values (123421, 98456);
 insert into Student_Session_Schedule values (123421, 123456);
 insert into Student_Session_Schedule values (1309342, 123456);
 
+/* Committee Attendees */
+insert into Committee_Attendees values(8, 123450);
+insert into Committee_Attendees values(1, 98456);
+insert into Committee_Attendees values(2, 743456);
+insert into Committee_Attendees values(3, 743456);
+insert into Committee_Attendees values(8, 643456);
+
 /* #Sponsors */
 insert into Sponsors values ("Platinum", 5, 35345, "The company");
 insert into Sponsors values ("Gold", 4, 92348, "Dominate");
