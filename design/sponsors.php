@@ -62,7 +62,7 @@
               # Returns: None # Throws: None
 
               function displaySubCom($compName, $pos){
-                echo "<h2>",$compName," Sub-Committee Members</h2>";
+                echo "<h2>",$compName," Available Jobs</h2>";
                 echo "<table>";
                 echo "<tr><th>Position Title</th></tr>";
                 foreach($pos as $p){
