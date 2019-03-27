@@ -85,8 +85,9 @@
               # Returns: positions (The positions from the desired company.) # Throws: None 
 
               function getPositions($dbh, $compName) {
-                $positions = $dbh->query("Select JobTitle From (Sponsors inner join
-                                          JobAdds on Sponsors.CompanyID=JobAdds.CompanyID) as A
+                $positions = $dbh->query("Select JobTitle From (select CompanyName, JobTitle 
+                                          from Sponsors inner join JobAdds on 
+                                          Sponsors.CompanyID=JobAdds.CompanyID) as A
                                           where A.CompanyName='$compName'");
                 return $positions;
               }
