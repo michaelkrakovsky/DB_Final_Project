@@ -15,7 +15,7 @@
             # Returns: listNames (The names from the table.) # Throws: None
 
             function getDesiredNames($sessAttend, $tbTwo, $sessAttendID, $tbColTwo, $pdo) {
-               $listNames = $dbh->query("select FirstName, LastName from 
+               $listNames = $pdo->query("select FirstName, LastName from 
                                             (select Distinct '$sessAttendID' from '$sessAttend') as A
                                             inner join '$tbTwo' on
                                             A.'$sessAttendID'='$tbTwo'.'$tbColTwo'");
