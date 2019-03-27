@@ -42,9 +42,9 @@
             $students = getDesiredNames("Student_Session_Schedule", "AttendeeID", "Students", "StudentID", $dbh); 
             $sponsors = getDesiredNames("Sponsor_Session_Schedule", "SponsorID", "Sponsore_Attendee", "SponsorID", $dbh);
             $professi = getDesiredNames("Professional_Session_Schedule", "ProfessionalID", "Professionals", "ProfessionalID", $dbh);
-            displaySubCom("Students", $students);
-            displaySubCom("Sponsors", $sponsors);
-            displaySubCom("Professional", $professi);
+            displaySubCom($students, "Students");
+            displaySubCom($sponsors, "Sponsors");
+            displaySubCom($professi, "Professional");
             $dbh = Null;
         ?>
     </div>
