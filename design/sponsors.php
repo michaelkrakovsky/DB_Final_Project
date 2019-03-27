@@ -112,10 +112,10 @@
                 echo "</select>";
                 echo "<input type='submit' name='getPos' value='List Jobs'>";
                 if(isset($_POST['getPos'])) {
-                  if(($_POST["sponsorName"] != 'showAllJobs') || ($_POST["sponsorName"] != 'Null')) {
+                  if(($_POST["sponsorName"] != 'showAllJobs') && ($_POST["sponsorName"] != 'Null')) {
                     $jobs = getPositions($dbh, $_POST["sponsorName"]);
                     displaySubCom($_POST["sponsorName"], $jobs);
-                  } else if ($_POST["sponsorName"] != 'showAllJobs') {
+                  } else if ($_POST["sponsorName"] == 'showAllJobs') {
                     $allJobs = getAllPositions($dbh);
                     displaySubCom("Display All", $allJobs);
                   }
