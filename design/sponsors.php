@@ -120,6 +120,8 @@
                     displaySubCom("Display All", $allJobs);
                   }
                   unset($_POST["sponsorName"]);
+                } else {
+                  echo "<p>There has been an error with the query.</p>"
                 }
                 $dbh = Null;
               ?>
