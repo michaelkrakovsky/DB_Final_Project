@@ -41,7 +41,7 @@
                             '');
 
             $students = getDesiredNames("Student_Session_Schedule", "Students", "AttendeeID", "StudentID", $dbh); 
-            $sponsors = getDesiredNames("Sponsor_Session_Schedule", "Sponsore_Attendee", "SponsorID", "SponsorID", $dbh);
+            $sponsors = getDesiredNames("Sponsor_Session_Schedule", "Sponsor_Attendee", "SponsorID", "SponsorID", $dbh);
             $professi = getDesiredNames("Professional_Session_Schedule", "Professionals", "ProfessionalID", "ProfessionalID", $dbh);
             if ($students == Null) {
                 echo "<p>HOUUUUUUSTON, WE...</p>";
