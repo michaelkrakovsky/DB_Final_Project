@@ -44,7 +44,12 @@
             function insertNewProfessional($fName, $lName, $defaultSession, $pdo) {
                 $newID = getNewID($pdo);
                 $pdo->query("INSERT INTO Professionals Values ($newID, '$fName', '$lName')");
-                $pdo->query("INSERT INTO Professional_Session_Schedule Values ($newID, $defaultSession)");
+                if (!$pdo) {
+                    echo "The Query Was Invalid\n";
+                } else {
+                    $pdo->query("INSERT INTO Professional_Session_Schedule Values ($newID, $defaultSession)");
+                }
+                
             }
 
             $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
