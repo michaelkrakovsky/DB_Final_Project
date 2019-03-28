@@ -176,7 +176,7 @@
               # companyName (The name of the supposed company), pdo (The database connection)
               # Throws: None # Returns: None
 
-              function insertSponsors($fName, $lName, $companyName, $pdo) {
+              function insertSponsors($fName, $lName, $defaultSession, $companyName, $pdo) {
                   $newID = getNewID($pdo);
                   $compID = getCompanyID($pdo, $companyName);
                   if ($compID != Null) {            # Ensure the company exists, Insert If entry is legal.
@@ -199,7 +199,7 @@
               $s = getSponsors($dbh);
               insertNewSponsTags($s);
               if(isset($_POST['insertCompany'])) {
-                insertSponsors($_POST['firstName'], $_POST['lastName'], $_POST["companyName"], 123456, $dbh);
+                insertSponsors($_POST['firstName'], $_POST['lastName'], 123456, $_POST["companyName"], $dbh);
               }
               ?>
         </div>
