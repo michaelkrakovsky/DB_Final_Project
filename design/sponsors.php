@@ -136,7 +136,7 @@
                   echo "<h5>Input Your Company Name</h5>";
                   echo "<select name='companyName'><br>";
                   displayCompOptions($morespons); 
-                  echo "</select>"
+                  echo "</select>";
                   echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
                   echo "</form>";
               }
