@@ -121,8 +121,8 @@
                   }
                 }
                 $dbh = Null;
-                echo "</form>"
-                echo "<h3>Insert A New Sponsor Representive</h3>"
+                echo "</form>";
+                echo "<h3>Insert A New Sponsor Representive</h3>";
 
               # Function Description: Provide the html to Insert a new Sponsor.
               # Parameters: None # Returns: None # Throws: None
