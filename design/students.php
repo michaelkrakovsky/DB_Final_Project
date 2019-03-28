@@ -99,7 +99,9 @@
                                               where A.NumStudents < 4
                                               Order By A.NumStudents Desc
                                               Limit 1");            # Query that gets the hotel room to input the student
-              $newRoom = Null;                # If no rooms are available, a null will be returned.
+              if($roomInformation->rowCount()==0) {
+                 return Null;                # If no rooms are available, a null will be returned.
+              }
               foreach($roomInformation as $r) {
                 $newRoom = $r[0];
               }
