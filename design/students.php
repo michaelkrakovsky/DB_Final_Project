@@ -65,7 +65,6 @@
             # Parameters: None # Returns: None # Throws: None
 
             function insertNewStudTags() {
-                echo "<h2>Insert A New Student</h2>";
                 echo "<form method='post'>";
                 echo "<h5>Input First Name</h5>";
                 echo "<input type='text' name='firstName' value='First Name'><br>";
@@ -116,7 +115,7 @@
             function insertNewStudent($fName, $lName, $defaultSession, $pdo) {
                 $newID = getNewID($pdo);
                 $newHotelRoom = getHotelRoom($pdo);
-                if ($newHotelRoom) {
+                if ($newHotelRoom != Null) {
                   $pdo->query("INSERT INTO Students Values ($newID, '$fName', '$lName', '$newHotelRoom')");
                   if (!$pdo) {
                       echo "The Query Was Invalid\n";
@@ -135,7 +134,6 @@
 
             insertNewStudTags();
             if(isset($_POST['insertStud'])) {
-                getNewID($dbh);
                 insertNewStudent($_POST['firstName'], $_POST['lastName'], 123456, $dbh);
             }
             ?>

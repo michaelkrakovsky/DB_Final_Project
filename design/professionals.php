@@ -58,7 +58,6 @@
 
             insertNewProfTags();
             if(isset($_POST['insertProf'])) {
-                getNewID($dbh);
                 insertNewProfessional($_POST['firstName'], $_POST['lastName'], 123456, $dbh);
             }
         ?>
