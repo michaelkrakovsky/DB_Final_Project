@@ -103,8 +103,8 @@
                  return Null;                # If no rooms are available, a null will be returned.
               }
               foreach($roomInformation as $r) {
-                $newRoom = $r[0];
-                echo "<p>",$r[0],"</p>";
+                $newRoom = $r;
+                echo "<p>",$r,"</p>";
                 break;
               }
               return $newRoom;
