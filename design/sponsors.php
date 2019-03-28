@@ -195,8 +195,9 @@
               $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                       'root',
                       '');
-
-              insertNewSponsTags($morespons);
+            
+              $s = getSponsors($dbh);
+              insertNewSponsTags($s);
               if(isset($_POST['insertCompany'])) {
                 insertSponsors($_POST['firstName'], $_POST['lastName'], $_POST["companyName"], 123456, $dbh);
               }
