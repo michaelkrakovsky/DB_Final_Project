@@ -48,6 +48,7 @@
                     echo "The Query Was Invalid\n";
                 } else {
                     $pdo->query("INSERT INTO Professional_Session_Schedule Values ($newID, $defaultSession)");
+                    echo "<p>The Professional '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
                 }
                 
             }

@@ -122,6 +122,83 @@
                 $dbh = Null;
               ?>
           </form>
+          <h3>Insert A New Sponsor Representive</h3>
+          <?php
+
+              # Function Description: Provide the html to Insert a new Sponsor.
+              # Parameters: None # Returns: None # Throws: None
+
+              function insertNewSponsTags() {
+                  echo "<form method='post'>";
+                  echo "<h5>Input First Name</h5>";
+                  echo "<input type='text' name='firstName' value='First Name'><br>";
+                  echo "<h5>Input Last Name</h5>";
+                  echo "<input type='text' name='lastName' value='Last Name'><br>";
+                  echo "<h5>Input Your Company Name</h5>"
+                  echo "<input type='text' name='companyName' value='Company Name'><br>";
+                  echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
+                  echo "</form>";
+              }
+
+              # Function Description: Return a valid new sponsor id. (The highest ID + 7)
+              # Parameters: pdo (The database connection) # Throws: None 
+              # Returns: newID (The new ID to insert into the proffesional table)
+
+              function getNewID($pdo) {
+                  $getMaxInt = $pdo->query("Select max(SponsorID) from Sponsor_Attendee");
+                  foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
+                      $newid = $i[0];
+                  }
+                  $i[0] = $i[0] + 7;                  
+                  return $i[0];
+              }
+
+              # Function Description: Provide the ID of the company to be inserted with the Sponsor.
+              # Parameters: pdo (The database connection), compName (The name of the company)
+              # Returns: compID (The ID of the company) # Throws: None
+
+              function getCompanyID($pdo, $compName) {
+                $comp = $pdo->query("Select CompanyID from Sponsors where CompanyName='$compName'");           
+                if($comp->rowCount()==0) {
+                  return Null;                # If no company exists, a null will be returned.
+                }
+                foreach($comp as $c) {
+                  $compID = $c[0];
+                }
+                return $compID;
+              }
+
+              # Function Desciption: Insert a new sponsor.
+              # Parameters: fName (The new student first name), lName (The new student last name), 
+              # defaultSession (The default session to insert the student. Consider this the intro session.), 
+              # companyName (The name of the supposed company), pdo (The database connection)
+              # Throws: None # Returns: None
+
+              function insertNewStudent($fName, $lName, $companyName, $pdo) {
+                  $newID = getNewID($pdo);
+                  $compID = getCompanyID($pdo, $companyName);
+                  if ($compID != Null) {            # Ensure the company exists, Insert If entry is legal.
+                    $pdo->query("INSERT INTO Sponsor_Attendee Values ($newID, $compID, '$fName', '$lName')");
+                    if (!$pdo) {
+                        echo "The User Input was Invalid.\n";
+                    } else {
+                        $pdo->query("INSERT INTO Sponsor_Session_Schedule Values ($newID, $defaultSession)");
+                        echo "<p>The Sponsor Attendee '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
+                    }
+                  } else {
+                    echo "<p>The company you have entered does not exist!</p>";
+                  }
+              }
+
+              $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+                      'root',
+                      '');
+
+              insertNewStudTags();
+              if(isset($_POST['insertCompany'])) {
+                  insertNewStudent($_POST['firstName'], $_POST['lastName'], $_POST['companyName'], 123456, $dbh);
+              }
+              ?>
         </div>
     </div>
 </body>
