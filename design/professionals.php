@@ -7,15 +7,16 @@
     <div class="main">
         <h2>Home</h2>
         <?php
-            
+
             # Function Description: Provide the html to Insert a new Professional.
             # Parameters: None # Returns: None # Throws: None
 
             function insertNewProfTags() {
+                echo "<h2>Insert A New Professional</h2>";
                 echo "<form method='post'>";
-                echo "<h5>Input First Name</h5><br>";
+                echo "<h5>Input First Name</h5>";
                 echo "<input type='text' name='firstName' value='First Name'><br>";
-                echo "<h5>Input Last Name</h5><br>";
+                echo "<h5>Input Last Name</h5>";
                 echo "<input type='text' name='lastName' value='Last Name'><br>";
                 echo "<input type='submit' name='insertProf' value='Insert Attendee'>";
                 echo "</form>";
@@ -26,7 +27,7 @@
             # Returns: newID (The new ID to insert into the proffesional table)
 
             function getNewID($pdo) {
-                $pdo->query("Select max(ProfessionalID from Professionals)");
+                $pdo->query("Select max(ProfessionalID) from Professionals");
                 $newID = gettype($pdo[0]);
                 echo "<p>$newID</p>";
             }
