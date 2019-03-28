@@ -47,6 +47,7 @@
                 # Function Description: Display all the options where the user can choose.
                 # Parameters: compNames (The company names held in a PDO object)
                 # Returns: None # Throws: None
+
                 function displayCompOptions($compNames) {
                     foreach($compNames as $name) {
                         echo "<option value='",$name[0],"'>",$name[0],"</option>";
@@ -120,10 +121,8 @@
                   }
                 }
                 $dbh = Null;
-              ?>
-          </form>
-          <h3>Insert A New Sponsor Representive</h3>
-          <?php
+                echo "</form>"
+                echo "<h3>Insert A New Sponsor Representive</h3>"
 
               # Function Description: Provide the html to Insert a new Sponsor.
               # Parameters: None # Returns: None # Throws: None
@@ -135,7 +134,9 @@
                   echo "<h5>Input Last Name</h5>";
                   echo "<input type='text' name='lastName' value='Last Name'><br>";
                   echo "<h5>Input Your Company Name</h5>";
-                  echo "<input type='text' name='companyName' value='Company Name'><br>";
+                  echo "<select name='companyName'><br>";
+                  displayCompOptions($morespons); 
+                  echo "</select>"
                   echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
                   echo "</form>";
               }
@@ -174,7 +175,7 @@
               # companyName (The name of the supposed company), pdo (The database connection)
               # Throws: None # Returns: None
 
-              function insertNewStudent($fName, $lName, $companyName, $pdo) {
+              function insertSponsors($fName, $lName, $companyName, $pdo) {
                   $newID = getNewID($pdo);
                   $compID = getCompanyID($pdo, $companyName);
                   if ($compID != Null) {            # Ensure the company exists, Insert If entry is legal.
@@ -194,9 +195,9 @@
                       'root',
                       '');
 
-              insertNewStudTags();
+              insertNewSponsTags();
               if(isset($_POST['insertCompany'])) {
-                  insertNewStudent($_POST['firstName'], $_POST['lastName'], $_POST['companyName'], 123456, $dbh);
+                insertSponsors($_POST['firstName'], $_POST['lastName'], $_POST["companyName"], 123456, $dbh);
               }
               ?>
         </div>
