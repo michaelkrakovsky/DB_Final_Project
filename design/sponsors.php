@@ -134,7 +134,7 @@
                   echo "<input type='text' name='firstName' value='First Name'><br>";
                   echo "<h5>Input Last Name</h5>";
                   echo "<input type='text' name='lastName' value='Last Name'><br>";
-                  echo "<h5>Input Your Company Name</h5>"
+                  echo "<h5>Input Your Company Name</h5>";
                   echo "<input type='text' name='companyName' value='Company Name'><br>";
                   echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
                   echo "</form>";
