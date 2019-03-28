@@ -104,6 +104,8 @@
               }
               foreach($roomInformation as $r) {
                 $newRoom = $r[0];
+                echo "<p>",$r[0],"</p>";
+                break;
               }
               return $newRoom;
             }
