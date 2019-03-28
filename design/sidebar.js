@@ -43,6 +43,7 @@ document.write(`
             <a href="./sponsors.php">Sponsors</a>
             <a href="./conference_attendees.php">Conference Attendees</a>
             <a href="./schedule.php">Schedule</a>
+            <a href="./professionals.php">Professionals</a>
         </div>
 
     </body>
