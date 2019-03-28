@@ -28,6 +28,7 @@
 
             function getNewID($pdo) {
                 $getMaxInt = $pdo->query("Select max(ProfessionalID) from Professionals");
+                for $i
                 echo "<p>",$getMaxInt[0],"</p>";
             }
 
