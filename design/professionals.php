@@ -28,8 +28,7 @@
 
             function getNewID($pdo) {
                 $pdo->query("Select max(ProfessionalID) from Professionals");
-                $newID = gettype($pdo[0]);
-                echo "<p>$newID</p>";
+                echo "<p>",$pdo[0],"</p>";
             }
 
             # Function Desciption: Insert a new professional.
