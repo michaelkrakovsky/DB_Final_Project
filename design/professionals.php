@@ -32,7 +32,7 @@
                     $newid = $i[0];
                 }
                 $i[0] = $i[0] + 7;                  
-                return $i;
+                return $i[0];
             }
 
             # Function Desciption: Insert a new professional.
