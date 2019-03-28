@@ -31,6 +31,7 @@
                 foreach($getMaxInt as $i) {
                     $newid = $i[0];
                 }
+                $i[0] = $i[0] + 7;
                 echo "<p>",$i[0],"</p>";
             }
 
