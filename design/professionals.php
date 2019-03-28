@@ -26,7 +26,7 @@
             function getNewID($pdo) {
                 $pdo->query("Select max(ProfessionalID from Professionals)");
                 $newID = gettype($pdo[0]);
-                echo "<p>$newID</p>"
+                echo "<p>$newID</p>";
             }
 
             # Function Desciption: Insert a new professional.
@@ -40,7 +40,7 @@
             $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                     'root',
                     '');
-                    
+
             insertNewProfTags();
             if(isset($_POST['insertProf'])) {
                 getNewID($dbh);
