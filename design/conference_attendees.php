@@ -30,7 +30,7 @@
                 echo "<h2>",$listNamesType," Attending</h2>";
                 echo "<ol>";
                 foreach($names as $n){
-                    echo "<li>",$n[0],"</li>";
+                    echo "<li>",$n[0]," ",$n[1],"</li>";
                 }
                     echo "</ol>";
                 }
