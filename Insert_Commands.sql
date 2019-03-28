@@ -36,6 +36,8 @@ Insert into Membership values ("SuperBowl Committee", 4);
 /* # Hotel Room */
 insert into HotelRoom values ("205A", 2);
 insert into HotelRoom values ("212A", 2);
+insert into HotelRoom values ("444A", 2);
+insert into HotelRoom values ("444B", 1);
 
 /* # Students */
 insert into Students values (123123, "Dude 1", "nooooooo", "205A");

@@ -44,7 +44,7 @@
             $professi = getDesiredNames("Professional_Session_Schedule", "Professionals", "ProfessionalID", "ProfessionalID", $dbh);
             displaySubCom($students, "Students");
             displaySubCom($sponsors, "Sponsors");
-            displaySubCom($professi, "Professional");
+            displaySubCom($professi, "Professionals");
             $dbh = Null;
         ?>
     </div>
