@@ -6,7 +6,6 @@
 <body>
     <div class="main">
         <h2>Schedule</h2>
-        <p></p>
         <!--
         DISPLAYS THE CONFERENCE SCHEDULE FOR A GIVEN DAY
         ##########################################################
