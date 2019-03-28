@@ -125,9 +125,10 @@
                 echo "<h3>Insert A New Sponsor Representive</h3>";
 
               # Function Description: Provide the html to Insert a new Sponsor.
-              # Parameters: None # Returns: None # Throws: None
+              # Parameters: sponsorsTwo (The list of companies to choose from) 
+              # Returns: None # Throws: None
 
-              function insertNewSponsTags() {
+              function insertNewSponsTags($sponsorsTwo) {
                   echo "<form method='post'>";
                   echo "<h5>Input First Name</h5>";
                   echo "<input type='text' name='firstName' value='First Name'><br>";
@@ -135,7 +136,7 @@
                   echo "<input type='text' name='lastName' value='Last Name'><br>";
                   echo "<h5>Input Your Company Name</h5>";
                   echo "<select name='companyName'><br>";
-                  displayCompOptions($morespons); 
+                  displayCompOptions($sponsorsTwo); 
                   echo "</select>";
                   echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
                   echo "</form>";
@@ -195,7 +196,7 @@
                       'root',
                       '');
 
-              insertNewSponsTags();
+              insertNewSponsTags($morespons);
               if(isset($_POST['insertCompany'])) {
                 insertSponsors($_POST['firstName'], $_POST['lastName'], $_POST["companyName"], 123456, $dbh);
               }
