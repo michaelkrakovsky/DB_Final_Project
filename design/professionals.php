@@ -43,7 +43,7 @@
 
             function insertNewProfessional($fName, $lName, $defaultSession, $pdo) {
                 $newID = getNewID($pdo);
-                $pdo->query("INSERT INTO Professionals ($newID, $fName, $lName)");
+                $pdo->query("INSERT INTO Professionals ($newID, '$fName', '$lName')");
                 $pdo->query("INSERT INTO Professional_Session_Schedule ($newID, $defaultSession)");
             }
 
