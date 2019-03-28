@@ -13,8 +13,10 @@
 
             function insertNewProfTags() {
                 echo "<form method='post'>";
-                echo "<input type='text' name='firstName' value='First Name'>";
-                echo "<input type='text' name='lastName' value='Last Name'>";
+                echo "<h5>Input First Name</h5><br>";
+                echo "<input type='text' name='firstName' value='First Name'><br>";
+                echo "<h5>Input Last Name</h5><br>";
+                echo "<input type='text' name='lastName' value='Last Name'><br>";
                 echo "<input type='submit' name='insertProf' value='Insert Attendee'>";
                 echo "</form>";
             }
