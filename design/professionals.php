@@ -28,19 +28,23 @@
 
             function getNewID($pdo) {
                 $getMaxInt = $pdo->query("Select max(ProfessionalID) from Professionals");
-                foreach($getMaxInt as $i) {
+                foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
                     $newid = $i[0];
                 }
-                $i[0] = $i[0] + 7;
-                echo "<p>",$i[0],"</p>";
+                $i[0] = $i[0] + 7;                  
+                return $i;
             }
 
             # Function Desciption: Insert a new professional.
-            # Parameters: newProfessional (The new professional to be inserted), pdo (The database connection)
+            # Parameters: fName (The new professional first name), lName (The new professional last name), 
+            # defaultSession (The default session to insert the professional. Consider this the intro sessions), 
+            # pdo (The database connection)
             # Throws: None # Returns: None
 
-            function insertNewProfessional($newProfessional, $pdo) {
-                $pdo->query("INSERT INTO Professionals ()");
+            function insertNewProfessional($fName, $lName, $defaultSession, $pdo) {
+                $newID = getNewID($pdo);
+                $pdo->query("INSERT INTO Professionals ($newID, $fName, $lName)");
+                $pdo->query("INSERT INTO Professional_Session_Schedule ($newID, $defaultSession)");
             }
 
             $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
@@ -50,7 +54,7 @@
             insertNewProfTags();
             if(isset($_POST['insertProf'])) {
                 getNewID($dbh);
-               # insertNewProfessional($_POST['firstName'], $_POST['lastName'], $dbh);
+                insertNewProfessional($_POST['firstName'], $_POST['lastName'], 123456, $dbh);
             }
         ?>
     </div>
