@@ -147,7 +147,7 @@
               # Returns: newID (The new ID to insert into the proffesional table)
 
               function getNewID($pdo) {
-                  $getMaxInt = $pdo->query("Select max(SponsorID) from Sponsor_Attendee");
+                  $getMaxInt = $pdo->query("select max(SponsorID) from Sponsor_Attendee");
                   foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
                       $newid = $i[0];
                   }
