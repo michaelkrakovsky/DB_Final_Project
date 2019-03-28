@@ -43,9 +43,8 @@
 
             function insertNewProfessional($fName, $lName, $defaultSession, $pdo) {
                 $newID = getNewID($pdo);
-                echo gettype($fName);
-                $pdo->query("INSERT INTO Professionals ($newID, '$fName', '$lName')");
-                $pdo->query("INSERT INTO Professional_Session_Schedule ($newID, $defaultSession)");
+                $pdo->query("INSERT INTO Professionals Values ($newID, '$fName', '$lName')");
+                $pdo->query("INSERT INTO Professional_Session_Schedule Values ($newID, $defaultSession)");
             }
 
             $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
