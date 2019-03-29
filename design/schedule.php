@@ -111,7 +111,7 @@
               
               echo "<h3>Change Session Information</h3>";
               echo "<form method='post'>";
-              echo "<h5>Choose Session Name</h5>"
+              echo "<h5>Choose Session Name</h5>";
               echo "<select name='sessionToChange'>";
               displayAllSessions($dbh);
               echo "</select>";
