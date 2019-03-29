@@ -74,6 +74,8 @@
                 unset($_POST['getSchedule']);
               }
 
+              echo "</form>";       # Close things off.
+
               # Function Description: Display all the session options.
               # Parameters: pdo (The database connection)
               # Returns: None # Throws: None
@@ -124,7 +126,6 @@
                 changeSessionInformation($_POST['sessionToChange'], $_POST['newDate'], $_POST['newSessionStartTime'], $_POST['newSessionEndTime'], $_POST['newConfRoom'], $dbh);
               }
             ?>
-        </form>
     </div>
 </body>
 </html>
