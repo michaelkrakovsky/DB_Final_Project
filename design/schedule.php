@@ -99,8 +99,8 @@
                 echo "<br>";
                 echo $newEndTime;
                 $updateTable = $pdo->query("UPDATE table SET
-                                            StartTime = $newStartTime,
-                                            EndTime = $newEndTime,
+                                            StartTime = '$newStartTime',
+                                            EndTime = '$newEndTime',
                                             RoomLocation = '$newRoom' WHERE
                                             Name='$sessToChange'");
                 echo "UPDATE table SET
