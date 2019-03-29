@@ -73,11 +73,11 @@
                 $temp = $row[0];
                 $temp = $temp * 10000;
                 echo "<p>Sponsor Platinum Entrance Money: ",$temp,"</p>";
-                $row = $sponsType->fetch(2);
+                $row = $sponsType->fetch(3);
                 $temp = $row[0];
                 $temp = $temp * 5000;
                 echo "<p>Sponsor Gold Entrance Money: ",$temp,"</p>";
-                $row = $sponsType->fetch(3);
+                $row = $sponsType->fetch(4);
                 $temp = $row[0];
                 $temp = $temp * 1000;
                 echo "<p>Sponsor Bronze Entrance Money: ",$temp,"</p>";
