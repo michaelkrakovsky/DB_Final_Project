@@ -236,11 +236,11 @@
               # Throws: None # Returns: True (If company exists) / False (Company does not exist)
 
               function doesCompExist($compName, $pdo) {
-                 $doesExist = $pdo->query("select CompanyName from Sponsors where CompanyName=$compName");
+                 $doesExist = $pdo->query("select CompanyName from Sponsors where CompanyName='$compName'");
                  echo gettype($doesExist);
-               #  if ($doesExist->rowCount() == 0) {
-                #   return False;
-                # }
+                 if ($doesExist->rowCount() == 0) {
+                   return False;
+                 }
                  return True;
               }
 
