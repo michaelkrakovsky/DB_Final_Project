@@ -103,6 +103,11 @@
                                             EndTime = $newEndTime,
                                             RoomLocation = '$newRoom' WHERE
                                             Name='$sessToChange'");
+                echo "UPDATE table SET
+                StartTime = $newStartTime,
+                EndTime = $newEndTime,
+                RoomLocation = '$newRoom' WHERE
+                Name='$sessToChange'";
                 if($updateTable) {
                   echo "<p>The session was successfully updated.</p>";
                 } else {
