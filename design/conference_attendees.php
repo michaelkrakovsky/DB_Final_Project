@@ -58,7 +58,7 @@
                                                   From Student_Session_Schedule");      # Number of students attending
                 $ProfessionalAttending = $pdo->query("select count(Distinct ProfessionalID
                                                From Professional_Session_Schedule");    # Number of sponsors attending
-                echo "<h3>Intake Statistics:</h3>"                               
+                echo "<h3>Intake Statistics:</h3>";                               
                 $row = $studentsAttending->fetch();
                 $row = $row * 50;
                 echo "<p>Student Entrance Money: ",$row,"</p>";
