@@ -267,9 +267,9 @@
                 $newID = getNewIDComp($pdo);
                 if ($doesNameExist == True) {
                   insertQ = $pdo->query("INSERT Into Sponsors Values ('$sponsLevel', $numEmails, $newID, '$companyName')");
-                  echo "<p>",$companyName," has been inserted.</p>"
+                  echo "<p>",$companyName," has been inserted.</p>";
                 } else {
-                  echo "<p>The name already exists and could not be inserted.</p>"
+                  echo "<p>The name already exists and could not be inserted.</p>";
                 }
               }
 
