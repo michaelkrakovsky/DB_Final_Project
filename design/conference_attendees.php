@@ -65,6 +65,10 @@
                 $row = $professionalAttending->fetch(0);
                 $row[0] = $row[0] * 100;
                 echo "<p>Professional Entrance Money: ",$row[0],"</p>";
+                $row = $sponsType->fetch(0);
+                echo "<p>Sponsor Silver Entrance Money: ",$row[0],"</p>";
+                $row = $sponsType->fetch(1);
+                echo "<p>Sponsor Platinum Entrance Money: ",$row[0],"</p>";
             }
             getStats($dbh);
             $dbh = Null;
