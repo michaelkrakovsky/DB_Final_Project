@@ -237,6 +237,7 @@
 
               function doesCompExist($compName, $pdo) {
                  $doesExist = $pdo->query("select CompanyName from Sponsors where CompanyName=$compName");
+                 echo gettype($doesExist);
                  if ($doesExist->rowCount() == 0) {
                    return False;
                  }
@@ -272,9 +273,7 @@
                   echo "<p>The name already exists and could not be inserted.</p>";
                 }
               }
-              $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
-              'root',
-              '');
+  
               insertNewCompanyTags();
               if(isset($_POST['insertNewSponsCompany'])) {
                 insertNewCompany($_POST['sponsorT'], $_POST['newCompanyName'], $dbh);
