@@ -73,12 +73,58 @@
                 displaySchedule($_POST['day'], $schedule);
                 unset($_POST['getSchedule']);
               }
+
+              # Function Description: Display all the session options.
+              # Parameters: pdo (The database connection)
+              # Returns: None # Throws: None
+
+              function displayAllSessions($pdo) {
+                $allSessions = $pdo->query("Select Name From Session");
+                foreach($allSessions as $s) {
+                    echo "<option value='",$s[0],"'>",$s[0],"</option>";
+                }
+              }
+
+              # Function Description: Change the session to the new designated time 
+              # Parameters: sessToChange (The session to change), newDate (The new date), newTime (The new session time), 
+              # endTime (The new end time), newRoom (The new room), pdo (The database connection)
+              # Returns: None # Throws: None
+              
+              function changeSessionInformation($sessToChange, $newDate, $newTime, $endTime, $newRoom, $pdo) {
+                $newStartTime = "$newDate $newTime";
+                $newEndTime = "$newDate $endTime";
+                $updateTable = $pdo->query("UPDATE table SET
+                                            StartTime = '$newStartTime',
+                                            EndTime = '$newEndTime',
+                                            RoomLocation = '$newRoom' WHERE
+                                            Name='$sessToChange'");
+                if($updateTable) {
+                  echo "<p>The session was successfully updated.</p>";
+                } else {
+                  echo "<p>Sorry, the session has not been updated.</p>";
+                }
+              }
+
+              echo "<form method='post'>";
+              echo "<select name='sessionToChange'>";
+              getSessions($dbh);
+              echo "</select>";
+              echo "<label for='dateForNew'>New Date</label>";
+              echo "<input type='date' id='dateForNew' name='newDate' value='2019-02-22' min='2019-02-08' max='2019-02-09'>";
+              echo "<label for='sessStartTime'>Choose New Session Start Time</label>";
+              echo "<input type='time' id='sessStartTime' name='newSessionStartTime' min='5:00' max='23:00'>";
+              echo "<label for='sessEndTime'>Choose New Session End Time</label>";
+              echo "<input type='time' id='sessEndTime' name='newSessionEndTime' min='5:00' max='23:00'>";
+              echo "<label for='newName'>Input New Room Name</label>";
+              echo "<input type='text' id='newName' name='newConfRoom' value='Main Room'><br>";
+              echo "<input type='submit' name='changeRoomName' value='Change Session Information'>";
+              echo "</form>";
+
+              if(isset($_POST['changeRoomName'])) {
+                changeSessionInformation($_POST['sessionToChange'], $_POST['newDate'], $_POST['newSessionStartTime'], $_POST['newSessionEndTime'], $_POST['newConfRoom'], $dbh);
+              }
             ?>
         </form>
-        <!--
-        END
-        ##########################################################
-        -->
     </div>
 </body>
 </html>
