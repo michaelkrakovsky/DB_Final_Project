@@ -119,9 +119,9 @@
               echo "<h5>New Date</h5>";
               echo "<input type='date' id='dateForNew' name='newDate' value='2019-02-08' min='2019-02-08' max='2019-02-09'>";
               echo "<h5>Choose New Session Start Time</h5>";
-              echo "<input type='time' id='sessStartTime' name='newSessionStartTime' value='5:00' min='5:00' max='23:00'>";
+              echo "<input type='time' id='sessStartTime' name='newSessionStartTime' value='05:00' min='05:00' max='23:00'>";
               echo "<h5>Choose New Session End Time</h5>";
-              echo "<input type='time' id='sessEndTime' name='newSessionEndTime' value='5:30' min='5:00' max='23:00'>";
+              echo "<input type='time' id='sessEndTime' name='newSessionEndTime' value='05:30' min='05:00' max='23:00'>";
               echo "<h5>Input New Room Name</h5>";
               echo "<input type='text' id='newName' name='newConfRoom' value='Main Room'><br>";
               echo "<input type='submit' name='changeRoomName' value='Change Session Information'>";
