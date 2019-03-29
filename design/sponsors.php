@@ -197,7 +197,7 @@
                 insertSponsors($_POST['firstName'], $_POST['lastName'], 123456, $_POST["companyName"], $dbh);
               }
 
-              echo "Create a New Company";
+              echo "<h3>Create a New Company</h3>";
 
               # Function Description: Provide the html to Insert a new Sponsor Company.
               # Parameters: None # Returns: None # Throws: None
@@ -261,7 +261,7 @@
               # pdo (The database connection)
               # Throws: None # Returns: None
 
-              function insertNewComany($sponsLevel, $companyName, $pdo) {
+              function insertNewCompany($sponsLevel, $companyName, $pdo) {
                 $numEmails = getNumEmails($sponsLevel);
                 $doesNameExist = doesCompExist($companyName, $pdo);
                 $newID = getNewIDComp($pdo);
