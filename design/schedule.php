@@ -111,13 +111,13 @@
               echo "<select name='sessionToChange'>";
               displayAllSessions($dbh);
               echo "</select>";
-              echo "<label for='dateForNew'>New Date</label>";
+              echo "<h3>New Date</h3>";
               echo "<input type='date' id='dateForNew' name='newDate' value='2019-02-22' min='2019-02-08' max='2019-02-09'>";
-              echo "<label for='sessStartTime'>Choose New Session Start Time</label>";
+              echo "<h3>Choose New Session Start Time</h3>";
               echo "<input type='time' id='sessStartTime' name='newSessionStartTime' min='5:00' max='23:00'>";
-              echo "<label for='sessEndTime'>Choose New Session End Time</label>";
+              echo "<h3>Choose New Session End Time</h3>";
               echo "<input type='time' id='sessEndTime' name='newSessionEndTime' min='5:00' max='23:00'>";
-              echo "<label for='newName'>Input New Room Name</label>";
+              echo "<h3>Input New Room Name</h3>";
               echo "<input type='text' id='newName' name='newConfRoom' value='Main Room'><br>";
               echo "<input type='submit' name='changeRoomName' value='Change Session Information'>";
               echo "</form>";
