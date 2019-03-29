@@ -98,7 +98,7 @@
                 echo $newStartTime;
                 echo "<br>";
                 echo $newEndTime;
-                $updateTable = $pdo->query("UPDATE table SET
+                $updateTable = $pdo->query("UPDATE Session SET
                                             StartTime = '$newStartTime',
                                             EndTime = '$newEndTime',
                                             RoomLocation = '$newRoom' WHERE
