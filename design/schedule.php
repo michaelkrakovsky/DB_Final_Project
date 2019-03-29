@@ -95,19 +95,11 @@
               function changeSessionInformation($sessToChange, $newDate, $newTime, $endTime, $newRoom, $pdo) {
                 $newStartTime = "$newDate $newTime:00";
                 $newEndTime = "$newDate $endTime:00";
-                echo $newStartTime;
-                echo "<br>";
-                echo $newEndTime;
                 $updateTable = $pdo->query("UPDATE Session SET
                                             StartTime = '$newStartTime',
                                             EndTime = '$newEndTime',
                                             RoomLocation = '$newRoom' WHERE
                                             Name='$sessToChange'");
-                echo "UPDATE table SET
-                StartTime = $newStartTime,
-                EndTime = $newEndTime,
-                RoomLocation = '$newRoom' WHERE
-                Name='$sessToChange'";
                 if($updateTable) {
                   echo "<p>The session was successfully updated.</p>";
                 } else {
