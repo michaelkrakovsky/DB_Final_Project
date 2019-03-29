@@ -109,7 +109,7 @@
 
               echo "<form method='post'>";
               echo "<select name='sessionToChange'>";
-              getSessions($dbh);
+              displayAllSessions($dbh);
               echo "</select>";
               echo "<label for='dateForNew'>New Date</label>";
               echo "<input type='date' id='dateForNew' name='newDate' value='2019-02-22' min='2019-02-08' max='2019-02-09'>";
