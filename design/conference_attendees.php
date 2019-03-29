@@ -45,6 +45,28 @@
             displaySubCom($students, "Students");
             displaySubCom($sponsors, "Sponsors");
             displaySubCom($professi, "Professionals");
+
+            # Function Description: Display Intake stats to the user
+            # Parameters: pdo (The data base connection)
+            # Returns: None # Throws: None
+
+            function getStats($pdo) {
+                $sponsType = $pdo->query("Select count(CompanyID), SponsorType 
+                                       From Sponsors group by (SponsorType)
+                                       order by SponsorType Desc");         # Get the sponsor money
+                $studentsAttending = $pdo->query("Select count(Distinct AttendeeID) 
+                                                  From Student_Session_Schedule");      # Number of students attending
+                $ProfessionalAttending = $pdo->query("select count(Distinct ProfessionalID
+                                               From Professional_Session_Schedule");    # Number of sponsors attending
+                echo "<h3>Intake Statistics:</h3>"                               
+                $row = $studentsAttending->fetch();
+                $row = $row * 50;
+                echo "<p>Student Entrance Money: ",$row,"</p>";
+                $row = $ProfessionalAttending->fetch();
+                $row = $row * 100;
+                echo "<p>Professional Entrance Money: ",$row,"</p>";
+            }
+            getStats($dbh);
             $dbh = Null;
         ?>
     </div>

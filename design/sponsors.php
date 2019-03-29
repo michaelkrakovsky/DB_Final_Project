@@ -237,7 +237,6 @@
 
               function doesCompExist($compName, $pdo) {
                  $doesExist = $pdo->query("select CompanyName from Sponsors where CompanyName='$compName'");
-                 echo gettype($doesExist);
                  if ($doesExist->rowCount() == 0) {
                    return False;
                  }
@@ -278,7 +277,6 @@
               if(isset($_POST['insertNewSponsCompany'])) {
                 insertNewCompany($_POST['sponsorT'], $_POST['newCompanyName'], $dbh);
               }
-
               ?>
         </div>
     </div>
