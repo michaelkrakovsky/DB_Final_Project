@@ -56,13 +56,13 @@
                                        order by SponsorType Desc");         # Get the sponsor money
                 $studentsAttending = $pdo->query("Select count(Distinct AttendeeID) 
                                                   From Student_Session_Schedule");      # Number of students attending
-                $ProfessionalAttending = $pdo->query("select count(Distinct ProfessionalID
+                $professionalAttending = $pdo->query("select count(Distinct ProfessionalID)
                                                From Professional_Session_Schedule");    # Number of sponsors attending
                 echo "<h3>Intake Statistics:</h3>";                               
                 $row = $studentsAttending->fetch(0);
                 $row[0] = $row[0] * 50;
                 echo "<p>Student Entrance Money: ",$row[0],"</p>";
-                $row = $ProfessionalAttending->fetch(0);
+                $row = $professionalAttending->fetch(0);
                 $row[0] = $row[0] * 100;
                 echo "<p>Professional Entrance Money: ",$row[0],"</p>";
             }
