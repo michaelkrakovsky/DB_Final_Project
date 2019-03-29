@@ -58,29 +58,37 @@
                                                   From Student_Session_Schedule");      # Number of students attending
                 $professionalAttending = $pdo->query("select count(Distinct ProfessionalID)
                                                From Professional_Session_Schedule");    # Number of sponsors attending
-                echo "<h3>Intake Statistics:</h3>";                               
+                echo "<h3>Intake Statistics:</h3>";   
+                $total = 0;                            
                 $row = $studentsAttending->fetch(0);
                 $row[0] = $row[0] * 50;
+                $total = $total + $row[0];
                 echo "<p>Student Entrance Money: ",$row[0],"</p>";
                 $row = $professionalAttending->fetch(0);
                 $row[0] = $row[0] * 100;
+                $total = $total + $row[0];
                 echo "<p>Professional Entrance Money: ",$row[0],"</p>";
                 $row = $sponsType->fetch(0);
                 $temp = $row[0];
                 $temp = $temp * 3000;
+                $total = $total + $temp;
                 echo "<p>Sponsor Silver Entrance Money: ",$temp,"</p>";
                 $row = $sponsType->fetch(1);
                 $temp = $row[0];
                 $temp = $temp * 10000;
+                $total = $total + $temp;
                 echo "<p>Sponsor Platinum Entrance Money: ",$temp,"</p>";
                 $row = $sponsType->fetch(3);
                 $temp = $row[0];
                 $temp = $temp * 5000;
+                $total = $total + $temp;
                 echo "<p>Sponsor Gold Entrance Money: ",$temp,"</p>";
                 $row = $sponsType->fetch(4);
                 $temp = $row[0];
                 $temp = $temp * 1000;
+                $total = $total + $temp;
                 echo "<p>Sponsor Bronze Entrance Money: ",$temp,"</p>";
+                echo "<p>The Total Entry Money: ",$total,"</p>";
             }
             getStats($dbh);
             $dbh = Null;
