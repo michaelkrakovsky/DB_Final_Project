@@ -66,9 +66,17 @@
                 $row[0] = $row[0] * 100;
                 echo "<p>Professional Entrance Money: ",$row[0],"</p>";
                 $row = $sponsType->fetch(0);
+                $row[0] = $row[0] * 3000;
                 echo "<p>Sponsor Silver Entrance Money: ",$row[0],"</p>";
                 $row = $sponsType->fetch(1);
+                $row[0] = $row[0] * 10000;
                 echo "<p>Sponsor Platinum Entrance Money: ",$row[0],"</p>";
+                $row = $sponsType->fetch(2);
+                $row[0] = $row[0] * 5000;
+                echo "<p>Sponsor Gold Entrance Money: ",$row[0],"</p>";
+                $row = $sponsType->fetch(3);
+                $row[0] = $row[0] * 1000;
+                echo "<p>Sponsor Bronze Entrance Money: ",$row[0],"</p>";
             }
             getStats($dbh);
             $dbh = Null;
