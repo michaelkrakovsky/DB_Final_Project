@@ -266,7 +266,7 @@
                 $numEmails = getNumEmails($sponsLevel);
                 $doesNameExist = doesCompExist($companyName, $pdo);
                 $newID = getNewIDComp($pdo);
-                if ($doesNameExist == True) {
+                if ($doesNameExist == False) {
                   $insertQ = $pdo->query("INSERT Into Sponsors Values ('$sponsLevel', $numEmails, $newID, '$companyName')");
                   echo "<p>",$companyName," has been inserted.</p>";
                 } else {
