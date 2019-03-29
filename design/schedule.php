@@ -95,6 +95,8 @@
               function changeSessionInformation($sessToChange, $newDate, $newTime, $endTime, $newRoom, $pdo) {
                 $newStartTime = "$newDate $newTime";
                 $newEndTime = "$newDate $endTime";
+                echo $newStartTime;
+                echo $newEndTime;
                 $updateTable = $pdo->query("UPDATE table SET
                                             StartTime = '$newStartTime',
                                             EndTime = '$newEndTime',
@@ -109,6 +111,7 @@
               
               echo "<h3>Change Session Information</h3>";
               echo "<form method='post'>";
+              echo "<h5>Choose Session Name</h5>"
               echo "<select name='sessionToChange'>";
               displayAllSessions($dbh);
               echo "</select>";
