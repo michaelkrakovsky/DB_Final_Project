@@ -17,7 +17,7 @@
             <input type="radio" name="day" value="day2">Day 2<br>
             <input type="submit" name="getSchedule" value="Get Schedule">
             <?php
-/*
+
               function getDays($dbh){
                 $days = $dbh->query("Select Distinct day(StartTime) From Session");
                 return $days;
@@ -126,7 +126,7 @@
 
               if(isset($_POST['changeRoomName'])) {
                 changeSessionInformation($_POST['sessionToChange'], $_POST['newDate'], $_POST['newSessionStartTime'], $_POST['newSessionEndTime'], $_POST['newConfRoom'], $dbh);
-              } */
+              }
             ?>
     </div>
 </body>
