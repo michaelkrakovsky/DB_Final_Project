@@ -8,6 +8,7 @@
         <h2>Students</h2>
         <h3>Hotel Room Student List</h3>
         <form method='post'>
+          <select name="hotelRoom">
           <?php
 
             # Function Description: Displays the students in a specific hotel room.
@@ -25,6 +26,16 @@
               echo "</table>";
             }
 
+              # Function Description: Display all the options where the hotel rooms.
+              # Parameters: compNames (The company names held in a PDO object)
+              # Returns: None # Throws: None
+
+              function displayHotelOptions($roomNames) {
+                foreach($roomNames as $room) {
+                    echo "<option value='",$room[0],"'>",$room[0],"</option>";
+                }
+              }
+
             # Function Description: Queries for the given hotel room in database.
             # Parameters: roomNum (The room number), dbh (The database connection)
             # Returns: students (The query with the students located in the hotel room.)
@@ -35,24 +46,33 @@
                                        Where HotelRoom = '$roomNum'");
               return $students;
             }
+
+            # Function Description: Queries for all hotel rooms
+            # Parameters: dbh (The database connection)
+            # Returns: all rooms
+
+            function getAllHotelRooms($dbh){
+              $rooms = $dbh->query("Select RoomNumber from HotelRoom");
+              return $rooms;
+            }
             
             $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
                            'root',
                            '');
 
-            echo "HotelRoom:<input type='text' value='' name='RoomNum'><br>";     # Get user's input.
+            $rooms = getAllHotelRooms($dbh);
+            displayHotelOptions($rooms);
             echo "<input type='submit' name='getRoom' value='List Students'>";
 
             if(isset($_POST['getRoom'])){                       # Check to see if room exists.
-              if($_POST['RoomNum'] != ''){
-                $room = hotelRoom($_POST['RoomNum'], $dbh);
+                $room = hotelRoom($_POST['hotelRoom'], $dbh);
                 if($room->rowCount()==0){
-                  echo "<p>The following Room Number ",$_POST['RoomNum']
+                  echo "<p>The following Room Number ",$_POST['hotelRoom']
                         ," does not exist. :(";
                 }
                 else{
-                  displayRoom($_POST['RoomNum'], $room);
-                  unset($_POST['RoomNum']);
+                  displayRoom($_POST['hotelRoom'], $room);
+                  unset($_POST['hotelRoom']);
                 }
               }
             }
