@@ -207,10 +207,10 @@
                 echo "<h5>Input Company Name</h5>";
                 echo "<input type='text' name='newCompanyName' value='Company Name'><br>";
                 echo "<h5>Input Sponsor Type</h5>";
-                echo "<input type='radio'  name='sponsorT' value='platinum'>Platinum<br>";
-                echo "<input type='radio'  name='sponsorT' value='gold'>Gold<br>";
-                echo "<input type='radio'  name='sponsorT' value='silver'>Silver<br>";
-                echo "<input type='radio'  name='sponsorT' value='bronze'>Bronze<br>";
+                echo "<input type='radio'  name='sponsorT' value='Platinum'>Platinum<br>";
+                echo "<input type='radio'  name='sponsorT' value='Gold'>Gold<br>";
+                echo "<input type='radio'  name='sponsorT' value='Silver'>Silver<br>";
+                echo "<input type='radio'  name='sponsorT' value='Bronze'>Bronze<br>";
                 echo "<input type='submit' name='insertNewSponsCompany' value='Insert New Company'>";
                 echo "</form>";
               }
@@ -220,11 +220,11 @@
               # Throws: None # Returns: numEmails (The number of emails)
 
               function getNumEmails($sponsLevel) {
-                if ($sponsLevel == 'platinum') {
+                if ($sponsLevel == 'Platinum') {
                   return 5;
-                } else if ($sponsLevel == 'gold') {
+                } else if ($sponsLevel == 'Gold') {
                   return 4;
-                } else if ($sponsLevel == 'silver') {
+                } else if ($sponsLevel == 'Silver') {
                   return 3;
                 } else {
                   return 0;
