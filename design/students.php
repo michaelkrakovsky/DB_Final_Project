@@ -160,7 +160,7 @@
                 ob_start();
                 insertNewStudent($_POST['firstName'], $_POST['lastName'], 123456, $dbh);
                 ob_flush();
-                uslep(1500000);
+                usleep(1500000);
                 header("Refresh: 0");
             }
             ?>
