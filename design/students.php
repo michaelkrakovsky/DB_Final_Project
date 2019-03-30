@@ -145,9 +145,6 @@
                   } else {
                       $pdo->query("INSERT INTO Student_Session_Schedule Values ($newID, $defaultSession)");
                       echo "<p>The Student '",$fName," ",$lName,"' is now in Room: ",$newHotelRoom,"</p>";      # Confirmation statement
-                      ob_end_flush(); 
-                      usleep(1500000);
-                      header("Refresh: 0");
                   }
                 } else {
                   echo "<p>There are no rooms available. Book Sooner Next Time!</p>";
@@ -160,7 +157,11 @@
 
             insertNewStudTags();
             if(isset($_POST['insertStud'])) {
+                ob_start();
                 insertNewStudent($_POST['firstName'], $_POST['lastName'], 123456, $dbh);
+                ob_flush();
+                uslep(1500000);
+                header("Refresh: 0");
             }
             ?>
     </div>
