@@ -52,7 +52,7 @@
             # Returns: all rooms
 
             function getAllHotelRooms($dbh){
-              $rooms = $dbh->query("Select RoomNumber from HotelRoom");
+              $rooms = $dbh->query("Select distinct HotelRoom from Students");
               return $rooms;
             }
             
