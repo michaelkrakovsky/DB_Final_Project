@@ -117,7 +117,7 @@
                   if(($_POST["sponsorName"] != 'showAllJobs') && ($_POST["sponsorName"] != 'Null')){
                     $deleted_sponsor = $_POST["sponsorName"];
                     deleteCompany($dbh, $_POST["sponsorName"]);
-                    header("Refresh: 0");
+                    #header("Refresh: 0");
                     echo '<p2>',$deleted_sponsor,' has been deleted</p2>';
                     unset($_POST["sponsorName"]);
                   }
