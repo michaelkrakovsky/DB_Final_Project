@@ -147,6 +147,7 @@
                       ob_start();
                       echo "<p>The Student '",$fName," ",$lName,"' is now in Room: ",$newHotelRoom,"</p>";      # Confirmation statement
                       ob_flush();
+                      flush();
                       sleep(1);
                       header("Refresh: 0");
                   }
