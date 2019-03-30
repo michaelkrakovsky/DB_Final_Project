@@ -118,7 +118,7 @@
                     $deleted_sponsor = $_POST["sponsorName"];
                     deleteCompany($dbh, $_POST["sponsorName"]);
                     echo '<p2>',$deleted_sponsor,' has been deleted</p2>';
-                    sleep(2);
+                    sleep(1);
                     unset($_POST["sponsorName"]);
                     header("Refresh: 0");
                   }
