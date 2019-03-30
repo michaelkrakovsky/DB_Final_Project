@@ -62,6 +62,7 @@
 
             $rooms = getAllHotelRooms($dbh);
             displayHotelOptions($rooms);
+            echo "</select>";
             echo "<input type='submit' name='getRoom' value='List Students'>";
 
             if(isset($_POST['getRoom'])){                       # Check to see if room exists.
@@ -74,7 +75,7 @@
                   displayRoom($_POST['hotelRoom'], $room);
                   unset($_POST['hotelRoom']);
                 }
-              }
+              
             }
           ?>
         </form>
