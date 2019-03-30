@@ -144,9 +144,8 @@
                       echo "The Query Was Invalid\n";
                   } else {
                       $pdo->query("INSERT INTO Student_Session_Schedule Values ($newID, $defaultSession)");
-                      ob_start();
                       echo "<p>The Student '",$fName," ",$lName,"' is now in Room: ",$newHotelRoom,"</p>";      # Confirmation statement
-                      ob_flush();
+                      ob_end_flush(); 
                       usleep(1500000);
                       header("Refresh: 0");
                   }
