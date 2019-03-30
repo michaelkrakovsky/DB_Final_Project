@@ -115,7 +115,6 @@
                 }
                 else if(isset($_POST['delComp'])){
                   if(($_POST["sponsorName"] != 'showAllJobs') && ($_POST["sponsorName"] != 'Null')){
-                    $deleted_sponsor = $_POST["sponsorName"];
                     deleteCompany($dbh, $_POST["sponsorName"]);
                     #echo '<p2>',$deleted_sponsor,' has been deleted</p2>';
                     unset($_POST["sponsorName"]);
@@ -186,7 +185,8 @@
                         echo "The User Input was Invalid.\n";
                     } else {
                         $pdo->query("INSERT INTO Sponsor_Session_Schedule Values ($newID, $defaultSession)");
-                        echo "<p>The Sponsor Attendee '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
+                        # echo "<p>The Sponsor Attendee '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
+                        header("Refresh: 0");
                     }
                   } else {
                     echo "<p>The company you have entered does not exist!</p>";
