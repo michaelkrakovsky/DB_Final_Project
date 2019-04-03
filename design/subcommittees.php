@@ -5,7 +5,7 @@
 
 <body>
     <div class="main">
-        <h2>Subcommitees</h2>
+        <h2>Subcommittees</h2>
         <p></p>
         <h3>SELECT A SUB-COMMITTEE TO DISPLAY MEMBERS</h3>
         <div class="dropdown">
