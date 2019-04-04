@@ -39,7 +39,7 @@ document.write(`
         <div class="sidenav">
             <a href="./homepage.html">Home</a>
             <a href="./students.php">Students</a>
-            <a href="./subcommittees.php">Subcommittees</a>
+            <a href="./subcommitees.php">Subcommitees</a>
             <a href="./sponsors.php">Sponsors</a>
             <a href="./conference_attendees.php">Conference Attendees</a>
             <a href="./schedule.php">Schedule</a>

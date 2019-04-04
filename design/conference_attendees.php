@@ -9,13 +9,13 @@
         <?php
 
             # Function Description: Get the list of names depending on the table name or group name.
-            # Parameters: tbOne (The first table to join.), tbTwo (The second table to join.), 
-            # tbColOne (The column name in the table one.), tbColTwo (The name of the column in table two.), 
+            # Parameters: tbOne (The first table to join.), tbTwo (The second table to join.),
+            # tbColOne (The column name in the table one.), tbColTwo (The name of the column in table two.),
             # pdo (The database connection)
             # Returns: listNames (The names from the table.) # Throws: None
 
             function getDesiredNames($sessAttend, $tbTwo, $sessAttendID, $tbColTwo, $pdo) {
-               $listNames = $pdo->query("select FirstName, LastName from 
+               $listNames = $pdo->query("select FirstName, LastName from
                                             (select Distinct $sessAttendID from $sessAttend) as A
                                             inner join $tbTwo on
                                             A.$sessAttendID=$tbTwo.$tbColTwo");
@@ -32,34 +32,33 @@
                 foreach($names as $n){
                     echo "<li>",$n[0]," ",$n[1],"</li>";
                 }
-                    echo "</ol>";
-                }
+                echo "</ol>";
+            }
 
-            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
                             'root',
-                            '');
+                            'temp');
 
-            $students = getDesiredNames("Student_Session_Schedule", "Students", "AttendeeID", "StudentID", $dbh); 
+            $students = getDesiredNames("Student_Session_Schedule", "Students", "AttendeeID", "StudentID", $dbh);
             $sponsors = getDesiredNames("Sponsor_Session_Schedule", "Sponsor_Attendee", "SponsorID", "SponsorID", $dbh);
             $professi = getDesiredNames("Professional_Session_Schedule", "Professionals", "ProfessionalID", "ProfessionalID", $dbh);
             displaySubCom($students, "Students");
             displaySubCom($sponsors, "Sponsors");
             displaySubCom($professi, "Professionals");
-
             # Function Description: Display Intake stats to the user
             # Parameters: pdo (The data base connection)
             # Returns: None # Throws: None
 
             function getStats($pdo) {
-                $sponsType = $pdo->query("Select count(CompanyID), SponsorType 
+                $sponsType = $pdo->query("Select count(CompanyID), SponsorType
                                        From Sponsors group by (SponsorType)
                                        order by SponsorType Desc");         # Get the sponsor money
-                $studentsAttending = $pdo->query("Select count(Distinct AttendeeID) 
+                $studentsAttending = $pdo->query("Select count(Distinct AttendeeID)
                                                   From Student_Session_Schedule");      # Number of students attending
                 $professionalAttending = $pdo->query("select count(Distinct ProfessionalID)
                                                From Professional_Session_Schedule");    # Number of sponsors attending
-                echo "<h3>Intake Statistics:</h3>";   
-                $total = 0;                            
+                echo "<h3>Intake Statistics:</h3>";
+                $total = 0;
                 $row = $studentsAttending->fetch(0);
                 $row[0] = $row[0] * 50;
                 $total = $total + $row[0];

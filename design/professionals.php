@@ -5,7 +5,7 @@
 
 <body>
     <div class="main">
-        <h2>Home</h2>
+        <h2>Professionals</h2>
         <?php
 
             # Function Description: Provide the html to Insert a new Professional.
@@ -23,7 +23,7 @@
             }
 
             # Function Description: Return a valid new professional id. (The highest ID + 7)
-            # Parameters: pdo (The database connection) # Throws: None 
+            # Parameters: pdo (The database connection) # Throws: None
             # Returns: newID (The new ID to insert into the proffesional table)
 
             function getNewID($pdo) {
@@ -31,13 +31,13 @@
                 foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
                     $newid = $i[0];
                 }
-                $i[0] = $i[0] + 7;                  
+                $i[0] = $i[0] + 7;
                 return $i[0];
             }
 
             # Function Desciption: Insert a new professional.
-            # Parameters: fName (The new professional first name), lName (The new professional last name), 
-            # defaultSession (The default session to insert the professional. Consider this the intro sessions), 
+            # Parameters: fName (The new professional first name), lName (The new professional last name),
+            # defaultSession (The default session to insert the professional. Consider this the intro sessions),
             # pdo (The database connection)
             # Throws: None # Returns: None
 
@@ -50,12 +50,12 @@
                     $pdo->query("INSERT INTO Professional_Session_Schedule Values ($newID, $defaultSession)");
                     echo "<p>The Professional '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
                 }
-                
+
             }
 
-            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
                     'root',
-                    '');
+                    'temp');
 
             insertNewProfTags();
             if(isset($_POST['insertProf'])) {

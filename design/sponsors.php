@@ -3,6 +3,13 @@
 
 <script src="sidebar.js"></script>
 
+<script>
+  function popUp(companyName) {
+    alert("The company " + companyName + " has been inserted");
+  }
+</script>
+<input type="button" onclick="popUp()" value="Show alert box">
+
 <body>
     <div class="main">
         <h2>Sponsors</h2>
@@ -29,9 +36,9 @@
               return $spons;
             }
 
-            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
                            'root',
-                           '');
+                           'temp');
 
             $spons = getSpons($dbh);
             displaySpons($spons)
@@ -90,9 +97,9 @@
                   $allPositions = $dbh->query("select JobTitle from JobAdds");
                   return $allPositions;
                 }
-                $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+                $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
                                'root',
-                               '');
+                               'temp');
 
                 function deleteCompany($dbh, $companyName){
                   $dbh->query("Delete From Sponsors Where CompanyName = '$companyName'");
@@ -116,16 +123,15 @@
                 else if(isset($_POST['delComp'])){
                   if(($_POST["sponsorName"] != 'showAllJobs') && ($_POST["sponsorName"] != 'Null')){
                     deleteCompany($dbh, $_POST["sponsorName"]);
-                    #echo '<p2>',$deleted_sponsor,' has been deleted</p2>';
+                    echo '<p2>',$_POST["sponsorName"],' has been deleted</p2>';
                     unset($_POST["sponsorName"]);
-                    header("Refresh: 0");
                   }
                 }
                 echo "</form>";
                 echo "<h3>Insert A New Sponsor Representive</h3>";
 
               # Function Description: Provide the html to Insert a new Sponsor.
-              # Parameters: sponsorsTwo (The list of companies to choose from) 
+              # Parameters: sponsorsTwo (The list of companies to choose from)
               # Returns: None # Throws: None
 
               function insertNewSponsTags($sponsorsTwo) {
@@ -136,14 +142,14 @@
                   echo "<input type='text' name='lastName' value='Last Name'><br>";
                   echo "<h5>Input Your Company Name</h5>";
                   echo "<select name='companyName'><br>";
-                  displayCompOptions($sponsorsTwo); 
+                  displayCompOptions($sponsorsTwo);
                   echo "</select>";
                   echo "<input type='submit' name='insertCompany' value='Insert Attendee'>";
                   echo "</form>";
               }
 
               # Function Description: Return a valid new sponsor id. (The highest ID + 7)
-              # Parameters: pdo (The database connection) # Throws: None 
+              # Parameters: pdo (The database connection) # Throws: None
               # Returns: newID (The new ID to insert into the proffesional table)
 
               function getNewID($pdo) {
@@ -151,7 +157,7 @@
                   foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
                       $newid = $i[0];
                   }
-                  $i[0] = $i[0] + 7;                  
+                  $i[0] = $i[0] + 7;
                   return $i[0];
               }
 
@@ -160,7 +166,7 @@
               # Returns: compID (The ID of the company) # Throws: None
 
               function getCompanyID($pdo, $compName) {
-                $comp = $pdo->query("Select CompanyID from Sponsors where CompanyName='$compName'");           
+                $comp = $pdo->query("Select CompanyID from Sponsors where CompanyName='$compName'");
                 if($comp->rowCount()==0) {
                   return Null;                # If no company exists, a null will be returned.
                 }
@@ -171,8 +177,8 @@
               }
 
               # Function Desciption: Insert a new sponsor.
-              # Parameters: fName (The new student first name), lName (The new student last name), 
-              # defaultSession (The default session to insert the student. Consider this the intro session.), 
+              # Parameters: fName (The new student first name), lName (The new student last name),
+              # defaultSession (The default session to insert the student. Consider this the intro session.),
               # companyName (The name of the supposed company), pdo (The database connection)
               # Throws: None # Returns: None
 
@@ -185,14 +191,13 @@
                         echo "The User Input was Invalid.\n";
                     } else {
                         $pdo->query("INSERT INTO Sponsor_Session_Schedule Values ($newID, $defaultSession)");
-                        # echo "<p>The Sponsor Attendee '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
-                        header("Refresh: 0");
+                        echo "<p>The Sponsor Attendee '",$fName," ",$lName,"' is now registered.</p>";      # Confirmation statement
                     }
                   } else {
                     echo "<p>The company you have entered does not exist!</p>";
                   }
               }
-            
+
               $s = getSponsors($dbh);
               insertNewSponsTags($s);
               if(isset($_POST['insertCompany'])) {
@@ -209,10 +214,10 @@
                 echo "<h5>Input Company Name</h5>";
                 echo "<input type='text' name='newCompanyName' value='Company Name'><br>";
                 echo "<h5>Input Sponsor Type</h5>";
-                echo "<input type='radio'  name='sponsorT' value='Platinum'>Platinum<br>";
-                echo "<input type='radio'  name='sponsorT' value='Gold'>Gold<br>";
-                echo "<input type='radio'  name='sponsorT' value='Silver'>Silver<br>";
-                echo "<input type='radio'  name='sponsorT' value='Bronze'>Bronze<br>";
+                echo "<input type='radio'  name='sponsorT' value='platinum'>platinum<br>";
+                echo "<input type='radio'  name='sponsorT' value='gold'>gold<br>";
+                echo "<input type='radio'  name='sponsorT' value='silver'>silver<br>";
+                echo "<input type='radio'  name='sponsorT' value='bronze'>bronze<br>";
                 echo "<input type='submit' name='insertNewSponsCompany' value='Insert New Company'>";
                 echo "</form>";
               }
@@ -222,11 +227,11 @@
               # Throws: None # Returns: numEmails (The number of emails)
 
               function getNumEmails($sponsLevel) {
-                if ($sponsLevel == 'Platinum') {
+                if ($sponsLevel == 'platinum') {
                   return 5;
-                } else if ($sponsLevel == 'Gold') {
+                } else if ($sponsLevel == 'gold') {
                   return 4;
-                } else if ($sponsLevel == 'Silver') {
+                } else if ($sponsLevel == 'silver') {
                   return 3;
                 } else {
                   return 0;
@@ -246,7 +251,7 @@
               }
 
               # Function Description: Return a valid new company id. (The highest ID + 7)
-              # Parameters: pdo (The database connection) # Throws: None 
+              # Parameters: pdo (The database connection) # Throws: None
               # Returns: newID (The new ID to insert into the proffesional table)
 
               function getNewIDComp($pdo) {
@@ -254,12 +259,12 @@
                 foreach($getMaxInt as $i) {                 # Extract the ID from the PDO
                     $newid = $i[0];
                 }
-                $i[0] = $i[0] + 7;                  
+                $i[0] = $i[0] + 7;
                 return $i[0];
             }
 
               # Function Descriptions: Insert a new company.
-              # Parameters: sponsLevel (The sponsor type of the company), companyName (The company name inputted by the user), 
+              # Parameters: sponsLevel (The sponsor type of the company), companyName (The company name inputted by the user),
               # pdo (The database connection)
               # Throws: None # Returns: None
 
@@ -269,13 +274,14 @@
                 $newID = getNewIDComp($pdo);
                 if ($doesNameExist == False) {
                   $insertQ = $pdo->query("INSERT Into Sponsors Values ('$sponsLevel', $numEmails, $newID, '$companyName')");
-                  #echo "<p>",$companyName," has been inserted.</p>";
+                  # echo "<p>",$companyName," has been inserted.</p>";
+                  echo "<script>popUp('$companyName');</script>";
                   header("Refresh: 0");
                 } else {
                   echo "<p>The name already exists and could not be inserted.</p>";
                 }
               }
-  
+
               insertNewCompanyTags();
               if(isset($_POST['insertNewSponsCompany'])) {
                 insertNewCompany($_POST['sponsorT'], $_POST['newCompanyName'], $dbh);

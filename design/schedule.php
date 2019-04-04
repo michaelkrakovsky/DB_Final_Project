@@ -42,9 +42,9 @@
                                          Where day(StartTime) = $day");
                 return $schedule;
               }
-              $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
+              $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
                              'root',
-                             '');
+                             'temp');
               $days = getDays($dbh);
 
               $i = 0;
@@ -87,26 +87,31 @@
                 }
               }
 
-              # Function Description: Change the session to the new designated time 
-              # Parameters: sessToChange (The session to change), newDate (The new date), newTime (The new session time), 
+              # Function Description: Change the session to the new designated time
+              # Parameters: sessToChange (The session to change), newDate (The new date), newTime (The new session time),
               # endTime (The new end time), newRoom (The new room), pdo (The database connection)
               # Returns: None # Throws: None
-              
+
               function changeSessionInformation($sessToChange, $newDate, $newTime, $endTime, $newRoom, $pdo) {
                 $newStartTime = "$newDate $newTime:00";
                 $newEndTime = "$newDate $endTime:00";
-                $updateTable = $pdo->query("UPDATE Session SET
-                                            StartTime = '$newStartTime',
-                                            EndTime = '$newEndTime',
-                                            RoomLocation = '$newRoom' WHERE
-                                            Name='$sessToChange'");
-                if($updateTable) {
-                  echo "<p>The session was successfully updated.</p>";
-                } else {
-                  echo "<p>Sorry, the session has not been updated.</p>";
+                if($newStartTime >= $newEndTime) {
+                  echo "<p>The start time cannot be greater than the end time</p>";
+                }
+                else {
+                  $updateTable = $pdo->query("UPDATE Session SET
+                                              StartTime = '$newStartTime',
+                                              EndTime = '$newEndTime',
+                                              RoomLocation = '$newRoom' WHERE
+                                              Name='$sessToChange'");
+                  if($updateTable) {
+                    echo "<p>The session was successfully updated.</p>";
+                  } else {
+                    echo "<p>Sorry, the session has not been updated.</p>";
+                  }
                 }
               }
-              
+
               echo "<h3>Change Session Information</h3>";
               echo "<form method='post'>";
               echo "<h5>Choose Session Name</h5>";
