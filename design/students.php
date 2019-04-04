@@ -56,9 +56,9 @@
               return $rooms;
             }
 
-            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
+            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',      # Connect to a database.
                            'root',
-                           'temp');
+                           '');
             $rooms = getAllHotelRooms($dbh);
             displayHotelOptions($rooms);
             echo "</select>";
@@ -142,9 +142,9 @@
                   echo "<p>There are no rooms available. Book Sooner Next Time!</p>";
                 }
             }
-            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
+            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                     'root',
-                    'temp');
+                    '');
             insertNewStudTags();
             if(isset($_POST['insertStud'])) {
                 ob_start();

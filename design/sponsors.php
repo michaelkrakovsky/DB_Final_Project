@@ -36,9 +36,9 @@
               return $spons;
             }
 
-            $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
+            $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                            'root',
-                           'temp');
+                           '');
 
             $spons = getSpons($dbh);
             displaySpons($spons)
@@ -97,9 +97,9 @@
                   $allPositions = $dbh->query("select JobTitle from JobAdds");
                   return $allPositions;
                 }
-                $dbh = new PDO('mysql:host=192.168.64.2;dbname=Assn_1_Committee_And_Attendees',
+                $dbh = new PDO('mysql:host=localhost;dbname=Assn_1_Committee_And_Attendees',
                                'root',
-                               'temp');
+                               '');
 
                 function deleteCompany($dbh, $companyName){
                   $dbh->query("Delete From Sponsors Where CompanyName = '$companyName'");
